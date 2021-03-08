@@ -6,7 +6,8 @@ import styles from './styles/History.module.scss';
 const History = props => {
   return (
     <main className={styles.bg}>
-      <div>
+      <div className={styles.container}>
+        <RunningSession />
         <RunningSession />
       </div>
     </main>

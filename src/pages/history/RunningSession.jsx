@@ -12,12 +12,12 @@ const RunningSession = props => {
           <p>80% of the goal</p>
         </div>
       </div>
-      <div>
-        <div>
-          <span>-0.4</span>
-          <p>lbs</p>
+      <div className={styles.container__rightdiv}>
+        <div className={styles.container__rightdiv__info}>
+          <span>3.4</span>
+          <p>km</p>
         </div>
-        <div></div>
+        <div>></div>
       </div>
     </div>
   );
