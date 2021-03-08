@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { AiOutlinePlus, AiOutlineHistory, AiFillPieChart } from 'react-icons/ai';
 import { FaRunning } from 'react-icons/fa';
@@ -6,9 +6,24 @@ import { RiMoreFill } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
 import styles from '../styles/MenuOption.module.scss';
 
+
 const MenuOption = props => {
   const { page } = props;
-  
+  const [selected, setSelected] = useState(false);
+  const [style, setStyle] = useState();
+   
+  useEffect(()=>{
+    selected ? (
+      setStyle(styles.container_selected)
+    ) : (
+      setStyle(styles.container_notselected)
+    )
+  }, [selected])
+
+  const handleClick = () => {
+    setSelected(!selected);
+  }
+
   let content = (
     <>
       <IconContext.Provider value={{ 'size': '0.6em'}}>
@@ -48,14 +63,16 @@ const MenuOption = props => {
   }
     
   return (
-    <div className={styles.container}>
-      <div className={styles.container__div}>
+    <button
+    className={style}
+    onClick={handleClick}>
+      <div>
         <span>
           {content}
         </span>
         <p>{name}</p>
       </div>
-    </div>
+    </button>
   );
 }
 
