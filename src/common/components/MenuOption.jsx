@@ -8,8 +8,7 @@ import styles from '../styles/MenuOption.module.scss';
 
 
 const MenuOption = props => {
-  const { page } = props;
-  const [selected, setSelected] = useState(false);
+  const { page, selected , handleUpdateSelected } = props;
   const [style, setStyle] = useState();
    
   useEffect(()=>{
@@ -21,7 +20,7 @@ const MenuOption = props => {
   }, [selected])
 
   const handleClick = () => {
-    setSelected(!selected);
+    handleUpdateSelected(page)
   }
 
   let content = (
