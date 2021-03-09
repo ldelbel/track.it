@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { AiOutlinePlus, AiOutlineHistory, AiFillPieChart } from 'react-icons/ai';
 import { FaRunning } from 'react-icons/fa';
@@ -10,6 +11,7 @@ import styles from '../styles/MenuOption.module.scss';
 const MenuOption = props => {
   const { page, selected , handleUpdateSelected } = props;
   const [style, setStyle] = useState();
+  let history = useHistory();
    
   useEffect(()=>{
     selected ? (
@@ -20,7 +22,12 @@ const MenuOption = props => {
   }, [selected])
 
   const handleClick = () => {
-    handleUpdateSelected(page)
+    handleUpdateSelected(page);
+    page === 'new' ? (
+      history.push(`/app/`)
+    ) : (
+      history.push(`/app/${page}`)
+    )
   }
 
   let content = (
