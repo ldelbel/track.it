@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/Menu.module.scss';
 import MenuOption from './MenuOption';
+import fromEntries from 'object.fromentries';
 
 const Menu = () => {
   const [selected, setSelected] = useState({
@@ -9,6 +10,10 @@ const Menu = () => {
     progress: false,
     more: false,
   });
+
+  if (!Object.fromEntries) {
+    fromEntries.shim();
+  }
 
   const defValue = (keyToCompare, keyReference ,value) => {
     return keyToCompare === keyReference ? true : false
