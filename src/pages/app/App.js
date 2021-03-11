@@ -16,7 +16,6 @@ import store from "../../store/store";
 function App() {
   let { path } = useRouteMatch();
 
-
   return (
     <Provider store={store}>
       <div className="App">

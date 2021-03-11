@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import GoogleApiWrapper from './Map';
 
 const Run = props => {
+  
+  
   return (
-    <div>
-      Run
-    </div>
+    <>
+      <div>
+        {/* {JSON.stringify(state, null, 2)} */}
+      </div>
+      <GoogleApiWrapper />
+    </>
   );
 }
 
