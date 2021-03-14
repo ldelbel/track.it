@@ -3,6 +3,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import GoogleApiWrapper from './Map';
 import { useGeolocation } from 'react-use';
+import styles from './styles/Run.module.scss';
+import { BsClockHistory } from 'react-icons/bs';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Run = props => {
   var location = useGeolocation();
@@ -52,7 +56,7 @@ const Run = props => {
     var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
     return d;
   }
-  console.log(haversine_distance({position: { lat: -23.620692, lng: -45.422793}}, {position: { lat:  -23.623928, lng: -45.419976}}))
+  
   const updateDistance = () => {
     if(breadcrumbs.list.length >= 2) {
       var newDist = distance + haversine_distance(breadcrumbs.list[breadcrumbs.list.length-1], breadcrumbs.list[breadcrumbs.list.length-2])
@@ -61,20 +65,27 @@ const Run = props => {
     }
   }
 
-
+  const percentage = 80;
   return (
     <>
-      <div>
-        <div>
-          {`Distance: ${distance.toFixed(2)}`}
+      <main className={styles.container}>
+        <div className={styles.clock}><BsClockHistory /> <p>00:00</p></div>
+        <div className={styles.content}>
+          <CircularProgressbar
+          value={percentage}
+          text={`${distance.toFixed(2)} km`}
+          background={true}
+          strokeWidth={'4'}
+          styles={buildStyles({
+            pathColor: 'var(--green)',
+            textColor: 'var(--darker)',
+            trailColor: '#f3f3f3',
+            backgroundColor: '#fff',
+          })}
+          />;
         </div>
-        <div>
-          {`Timestamp: ${location.timestamp}`}
-        </div>
-       
-        <button onClick={startRunningSession} syles={{ width: '50vw',}}>Start</button>
-        <button onClick={stopRunningSession}>Stop</button>
-      </div>
+        <button onClick={stopRunningSession} className={styles.stopbtn}>Finish</button>
+      </main>
     </>
   );
 }
