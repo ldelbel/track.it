@@ -69,7 +69,8 @@ const Run = props => {
   return (
     <>
       <main className={styles.container}>
-        <div className={styles.clock}><BsClockHistory /> <p>00:00</p></div>
+        <div className={styles.clock}><BsClockHistory /> <p>00:00:00</p></div>
+        <div className={styles.goal}><span>Goal:</span> <p>10.25 km</p></div>
         <div className={styles.content}>
           <CircularProgressbar
           value={percentage}
