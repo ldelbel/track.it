@@ -19,12 +19,13 @@
     font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
   }
 
   &__chart {
     background: white;
     width: 110%;
+    max-width: 720px;
     margin-left: -5%;
     display: flex;
     justify-content: center;
@@ -37,10 +38,9 @@
   &__title {
     width: 100%;
     font-size: 1.5rem;
-
     text-align: center;
     border-bottom: 0.05rem solid var(--darker);
-    margin: 1rem 0 1rem;
+    margin: 1rem 0 0.5rem;
     font-weight: 700;
   }
 
@@ -55,15 +55,18 @@
       justify-content: center;
 
       span {
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 700;
+        
       }
 
       &__div {
         border: 0.2rem solid var(--darker);
         border-radius: 50%;
-        width: 20vw;
-        height: 20vw;
+        width: 15vw;
+        height: 15vw;
+        max-width: 150px;
+        max-height: 150px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -71,7 +74,12 @@
 
         div {
           span {
-            font-size: 2.3rem;
+            font-size: 1.4rem;
+            color: var(--blue);
+          }
+
+          p {
+            font-size: 0.6rem;
           }
         }
 
