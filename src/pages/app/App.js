@@ -13,7 +13,7 @@ import Menu from "../../common/components/Menu";
 import store from "../../store/store";
 
 
-function App() {
+export default function App() {
   let { path } = useRouteMatch();
 
   return (
@@ -31,4 +31,3 @@ function App() {
   );
 }
 
-export default App;
