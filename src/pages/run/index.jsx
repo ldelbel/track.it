@@ -3,16 +3,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import GoogleApiWrapper from './Map';
 import { useGeolocation } from 'react-use';
-import styles from './styles/Run.module.scss';
-import { BsClockHistory } from 'react-icons/bs';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import RunScreen from './RunScreen';
+import Input from './Input';
 
 const Run = props => {
   var location = useGeolocation();
   const [distance, setDistance] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [breadcrumbs, setBreadcrumbs] = useState({ list: [] });
+  const [goal,setGoal] = useState(null);
+  const [percentage,setPercentage] = useState(0);
   const savedBreadCrumbs = useRef();
   var running = '';
 
@@ -22,9 +22,13 @@ const Run = props => {
     }
   },[location.loading])
 
-  useEffect( () => {
+  useEffect(() => {
     savedBreadCrumbs.current = addBreadcrumb;
   }, [breadcrumbs])
+
+  useEffect(() => {
+    setPercentage(distance/goal);
+  },[distance])
 
   const tick = () => {
     savedBreadCrumbs.current();
@@ -60,33 +64,26 @@ const Run = props => {
   const updateDistance = () => {
     if(breadcrumbs.list.length >= 2) {
       var newDist = distance + haversine_distance(breadcrumbs.list[breadcrumbs.list.length-1], breadcrumbs.list[breadcrumbs.list.length-2])
-      console.log(newDist)
       setDistance(newDist);
     }
   }
 
-  const percentage = 80;
   return (
     <>
-      <main className={styles.container}>
-        <div className={styles.clock}><BsClockHistory /> <p>00:00:00</p></div>
-        <div className={styles.goal}><span>Goal:</span> <p>10.25 km</p></div>
-        <div className={styles.content}>
-          <CircularProgressbar
-          value={percentage}
-          text={`${distance.toFixed(2)} km`}
-          background={true}
-          strokeWidth={'4'}
-          styles={buildStyles({
-            pathColor: 'var(--green)',
-            textColor: 'var(--darker)',
-            trailColor: '#f3f3f3',
-            backgroundColor: '#fff',
-          })}
-          />;
-        </div>
-        <button onClick={stopRunningSession} className={styles.stopbtn}>Finish</button>
-      </main>
+      {isRunning ?
+      (
+        <RunScreen 
+        percentage={percentage}
+        distance={distance}
+        stopRunningSession={stopRunningSession}
+        goal={goal}      
+        />
+      ) : ( 
+        <Input 
+        setGoal={setGoal}
+        startRunningSession={startRunningSession}      
+        />
+      )}
     </>
   );
 }

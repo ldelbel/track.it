@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { AiOutlinePlus, AiOutlineHistory, AiFillPieChart } from 'react-icons/ai';
 import { FaRunning } from 'react-icons/fa';
 import { RiMoreFill } from 'react-icons/ri';
@@ -12,6 +12,7 @@ const MenuOption = props => {
   const { page, selected , handleUpdateSelected } = props;
   const [style, setStyle] = useState();
   let history = useHistory();
+  console.log(history)
    
   useEffect(()=>{
     selected ? (
