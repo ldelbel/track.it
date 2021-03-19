@@ -6,11 +6,19 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const RunScreen = props => {
-  const { percentage, distance, stopRunningSession, goal } = props;
+  const { percentage, distance, stopRunningSession, goal, clock } = props;
+  const format = (num) => {
+    return (
+      num.toLocaleString('en-US', {
+      minimumIntegerDigits: 2,
+      useGrouping: false
+    })
+    )
+  }
 
   return (
     <main className={styles.container}>
-      <div className={styles.clock}><BsClockHistory /> <p>00:00:00</p></div>
+      <div className={styles.clock}><BsClockHistory /> <p>{`${format(clock.hrs)}:${format(clock.min)}:${format(clock.sec)}`}</p></div>
       <div className={styles.goal}><span>Goal:</span> <p>{goal} km</p></div>
       <div className={styles.content}>
         <CircularProgressbar
