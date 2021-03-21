@@ -12,7 +12,6 @@ const MenuOption = props => {
   const { page, selected , handleUpdateSelected } = props;
   const [style, setStyle] = useState();
   let history = useHistory();
-  console.log(history)
    
   useEffect(()=>{
     selected ? (

@@ -32,7 +32,7 @@ const Input = props => {
   return (
     <main className={styles.container}>
       <div className={styles.content}>
-        <span className={styles.content__title}>Set Your Goal for Today</span>
+        <span className={styles.content__title}>SET YOUR GOAL FOR TODAY</span>
         <div className={styles.content__inputs}>
           <div className={styles.input}>
             <button
