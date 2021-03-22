@@ -23,7 +23,7 @@ const App = props => {
   const load = async () => {
     const id = await userID(username);  
     const data = await fetchUserData(id);
-    fillList(data);
+    fillList(id,data);
     setIsLoading(false);
 }
 

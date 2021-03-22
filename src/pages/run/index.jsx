@@ -7,6 +7,7 @@ import RunScreen from './RunScreen';
 import Input from './Input';
 import { connect } from 'react-redux';
 import { addRunningSession } from '../../actions';
+import { postRunningSession } from '../../api';
 
 const Run = props => {
   var location = useGeolocation();
@@ -16,7 +17,7 @@ const Run = props => {
   const [goal,setGoal] = useState(0);
   const [percentage,setPercentage] = useState(0);
   const [timestamp, setTimestamp] = useState(null);
-  const { addRunningSession } = props;
+  const { addRunningSession, id} = props;
   const savedBreadCrumbs = useRef();
   const { start, pause, reset, seconds, minutes, hours } = useStopwatch({ autoStart: false });
   var running = '';
@@ -52,9 +53,10 @@ const Run = props => {
     clearInterval(running);
     setIsRunning(false);
     pause();
-    const duration = 3600 * hours + 60 * minutes + seconds;
-    const session = createSessionObject(distance, duration,timestamp);
+    const duration = hours + minutes / 60 + seconds / 3600;
+     const session = createSessionObject(distance, duration, timestamp);
     addRunningSession(session);
+    postRunningSession(id, session);
   }
 
   const addBreadcrumb = () => {

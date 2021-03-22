@@ -46,10 +46,10 @@ const fetchUserData = async (id) => {
   }
 }
 
-const postRunningSession = async (session) => {
-  const data = { runn: name }
+const postRunningSession = async (userID, session) => {
+  const data = { distance: session.distance, duration: session.duration, start_time: session.start_time}
   try {
-    const req = await fetch(`https://track-it-api.herokuapp.com/users`, {
+    const req = await fetch(`https://track-it-api.herokuapp.com/users/${userID}/running_sessions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,10 +57,10 @@ const postRunningSession = async (session) => {
       body: JSON.stringify(data),
     });
     const res = await req.json();
-    return res.id;
+    return res;
   } catch(err) {
     return err;
   }
 }
 
-export { userID, createUser, fetchUserData };
+export { userID, createUser, fetchUserData, postRunningSession };

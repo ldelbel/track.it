@@ -13,9 +13,9 @@ const setUser = user => ({
   payload: user
 });
 
-const fillList = list => ({
+const fillList = (id,list) => ({
   type: FILL_LIST,
-  payload: list
+  payload: [id,list]
 });
 
 const changePage = page => ({

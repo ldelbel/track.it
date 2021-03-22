@@ -1,6 +1,7 @@
 import { ADD_RUNNING_SESSION, SET_USER, FILL_LIST } from '../actions';
 
 const initialState = {
+  id: 0,
   username: '',
   runningSessions: []
 }
@@ -22,7 +23,8 @@ const runReducer = (state = initialState, action) => {
     case FILL_LIST:
       return {
         ...state,
-        runningSessions: action.payload,
+        id: action.payload[0],
+        runningSessions: action.payload[1],
       };
     default:
       return state;
