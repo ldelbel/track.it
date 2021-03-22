@@ -53,9 +53,9 @@ const Run = props => {
     clearInterval(running);
     setIsRunning(false);
     pause();
+    reset();
     const duration = hours + minutes / 60 + seconds / 3600;
     const session = createSessionObject(distance, duration, timestamp, goal);
-    console.log(session);
     addRunningSession(session);
     postRunningSession(id, session);
   }
@@ -85,7 +85,17 @@ const Run = props => {
   }
 
   const createSessionObject = (distance, duration, startTime, goal) => {
-    const session = { distance: distance, duration: duration, start_time: startTime, goal: goal}
+    const avg_speed = duration === 0 ? 0 : distance / duration;
+    const avg_pace = distance === 0 ? 0 : duration / distance;
+    
+    const session = { 
+      distance: distance,
+      duration: duration,
+      start_time: startTime,
+      goal: goal,
+      avg_speed: avg_speed,
+      avg_pace: avg_pace,
+    }
     return session;
   }
 

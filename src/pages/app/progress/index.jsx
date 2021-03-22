@@ -1,17 +1,31 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles/Progress.module.scss';
 import Chart from './Chart';
 
 const Progress = props => {
-      
+  const { runningSessions } = props;
+
+  const allSpeeds = runningSessions.map(session => session.avg_speed);
+  const allPaces = runningSessions.map(session => session.avg_pace);
+  const allDistancesPerDay = runningSessions.map(session => [new Date(session.start_time).toDateString().slice(4,10), session.distance])
+
+  const speedTotal = allSpeeds.reduce((accumulator,currentValue) => accumulator + currentValue)
+  const speedOverallAvg = speedTotal / allSpeeds.length;
+  const speedMaxValue = Math.max(...allSpeeds);
+ 
+  const paceTotal = allPaces.reduce((accumulator,currentValue) => accumulator + currentValue)
+  const paceOverallAvg = paceTotal / allPaces.length;
+  const paceMaxValue = Math.max(...allPaces);
+ 
+
   return (
     <>
       <main className={styles.container}>
         <div className={styles.content}>
           <div className={styles.content__title}>Your Progress</div>
           <div className={styles.content__chart}>
-            <Chart />
+            <Chart distancesPerDay={allDistancesPerDay} />
           </div>
           <div className={styles.section}>
             <div className={styles.section__title}>
@@ -22,7 +36,7 @@ const Progress = props => {
                 <span>Avg Speed</span>
                 <div div className={styles.section__info__item__div}>
                   <div>
-                    <span>56</span>
+                    <span>{speedOverallAvg}</span>
                     <p>km/h</p>
                   </div>
                 </div>
@@ -31,7 +45,7 @@ const Progress = props => {
                 <span>Avg Pace</span>
                 <div div className={styles.section__info__item__div}>
                   <div>
-                    <span>56</span>
+                    <span>{paceOverallAvg}</span>
                     <p>h/km</p>
                   </div>
                 </div>
@@ -44,19 +58,19 @@ const Progress = props => {
             </div>
             <div className={styles.section__info}>
               <div className={styles.section__info__item}>
-                <span>Avg Speed</span>
+                <span>Speed</span>
                 <div div className={styles.section__info__item__div}>
                   <div>
-                    <span>56</span>
+                    <span>{speedMaxValue}</span>
                     <p>km/h</p>
                   </div>
                 </div>
               </div>
               <div className={styles.section__info__item}>
-                <span>Avg Pace</span>
+                <span>Pace</span>
                 <div div className={styles.section__info__item__div}> 
                   <div>
-                    <span>56</span>
+                    <span>{paceMaxValue}</span>
                     <p>h/km</p>
                   </div>
                 </div>

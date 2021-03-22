@@ -52,7 +52,7 @@ const App = props => {
         />
         <Route
         path={`${path}/progress`}
-        render={props => <Progress {...props} /> }
+        render={props => <Progress {...props} runningSessions={runningSessions} /> }
         />
       </Switch>
       <Menu />

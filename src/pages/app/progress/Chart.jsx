@@ -1,39 +1,48 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
+import moment from 'moment';
 
 const Chart = props => {
+  const { distancesPerDay } = props;
+  const lastThirtyDays = [...new Array(30)].map((i, idx) => moment().startOf("day").subtract(idx, "days"));
+  const last30days = lastThirtyDays.map(day => {
+    return day._d.toDateString().slice(4,10)
+  })
+
+  const labels = last30days.reverse();
+  const objToChart = labels.reduce((acc,curr)=> (acc[curr]=0,acc),{});
+  console.log(objToChart)
+  console.log(distancesPerDay)
+
+  const distancesTest = [
+    ["Mar 22", 3.2],
+    ["Mar 21", 2.1],
+    ["Mar 20", 1.5],
+    ["Mar 19", 5.1],
+    ["Mar 18", 4.3]
+  ]
+  
+  distancesTest.forEach(dist => {
+    if(labels.includes(dist[0])){
+      objToChart[dist[0]] = dist[1];
+    }
+  })
+  
+  const dataSet = Object.values(objToChart);
+
+
+  console.log(dataSet)
+
+  
+
   const data = {
     chartData: {
-      labels: ['Sep 5', 'Sep 6', 'Sep 7', 'Sep 8', 'Sep 9','Sep 10',
-       'Sep 11', 'Sep 12', 'Sep 13', 'Sep 14', 'Sep 15', 'Sep 16', 'Sep 17',
-        'Sep 18', 'Sep 19','Sep 25', 'Sep 26', 'Sep 27', 'Sep 28', 'Sep 29'
-      ],
+      labels: labels,
       datasets: [
         {
           label: 'Distance (km)',
-          data: [
-            1.54,
-            2.35,
-            1.89,
-            0.56,
-            3.9,
-            0,
-            1.54,
-            2.35,
-            1.89,
-            0.56,
-            3.9,
-            0,
-            1.54,
-            2.35,
-            1.89,
-            0.56,
-            3.9,
-            0,
-            1,
-            2
-          ],
+          data: dataSet,
           backgroundColor: '#97E493',
           hoverBackgroundColor: '#27E493'
         }
