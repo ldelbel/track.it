@@ -1,9 +1,17 @@
 import { ADD_RUNNING_SESSION, SET_USER, FILL_LIST } from '../actions';
 
-const initialState = {
+let initialState = {
   id: 0,
   username: '',
   runningSessions: []
+}
+
+if(localStorage['user']){
+  initialState = {
+    id: localStorage['id'],
+    username: localStorage['user'],
+    runningSessions: localStorage['runningSessions']
+  }
 }
 
 const runReducer = (state = initialState, action) => {

@@ -16,16 +16,18 @@ import Loading from 'react-loading-components';
 
 
 const App = props => {
-  const { addRunningSession, username, fillList } = props;
+  const { addRunningSession, username, fillList, runningSessions } = props;
   let { path } = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const load = async () => {
     const id = await userID(username);  
     const data = await fetchUserData(id);
     fillList(id,data);
+    localStorage.setItem('id', JSON.stringify(id));
+    localStorage.setItem('runningSessions', JSON.stringify(data));
     setIsLoading(false);
-}
+  }  
 
   useEffect(() => {
     load();
@@ -46,7 +48,7 @@ const App = props => {
         />
         <Route 
         path={`${path}/history`}
-        render={props => <History {...props} /> }
+        render={props => <History {...props} runningSessions={runningSessions} /> }
         />
         <Route
         path={`${path}/progress`}

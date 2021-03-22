@@ -14,7 +14,7 @@ const Run = props => {
   const [distance, setDistance] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [breadcrumbs, setBreadcrumbs] = useState({ list: [] });
-  const [goal,setGoal] = useState(0);
+  const [goal,setGoal] = useState(0.0);
   const [percentage,setPercentage] = useState(0);
   const [timestamp, setTimestamp] = useState(null);
   const { addRunningSession, id} = props;
@@ -54,7 +54,8 @@ const Run = props => {
     setIsRunning(false);
     pause();
     const duration = hours + minutes / 60 + seconds / 3600;
-     const session = createSessionObject(distance, duration, timestamp);
+    const session = createSessionObject(distance, duration, timestamp, goal);
+    console.log(session);
     addRunningSession(session);
     postRunningSession(id, session);
   }
@@ -83,8 +84,8 @@ const Run = props => {
     }
   }
 
-  const createSessionObject = (distance, duration, startTime) => {
-    const session = { distance: distance, duration: duration, start_time: startTime}
+  const createSessionObject = (distance, duration, startTime, goal) => {
+    const session = { distance: distance, duration: duration, start_time: startTime, goal: goal}
     return session;
   }
 

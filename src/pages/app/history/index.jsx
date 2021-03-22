@@ -4,11 +4,17 @@ import RunningSession from './RunningSession';
 import styles from './styles/History.module.scss';
 
 const History = props => {
+  const { runningSessions } = props;
+  console.log(runningSessions)
   return (
     <main className={styles.bg}>
       <div className={styles.container}>
-        <RunningSession />
-        <RunningSession />
+
+        {
+          runningSessions.map(session => (
+            <RunningSession session={session} key={session.id}/>
+          ))          
+        }
       </div>
     </main>
   );

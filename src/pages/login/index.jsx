@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -6,10 +6,17 @@ import styles from './styles/Login.module.scss';
 import { setUser } from '../../actions';
 
 
+
 const Login = props => {
   const [name, setName] = useState();
   const { setUser } = props;
   let history = useHistory();
+
+  useEffect(()=>{
+    if(localStorage['user']) {
+      history.push('./app')
+    }
+  }, [])
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -17,6 +24,7 @@ const Login = props => {
 
   const handleClick = () => {
     setUser(name);
+    localStorage.setItem('user', name);
     history.push('/app');
   }
   
