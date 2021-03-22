@@ -46,4 +46,21 @@ const fetchUserData = async (id) => {
   }
 }
 
+const postRunningSession = async (session) => {
+  const data = { runn: name }
+  try {
+    const req = await fetch(`https://track-it-api.herokuapp.com/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    const res = await req.json();
+    return res.id;
+  } catch(err) {
+    return err;
+  }
+}
+
 export { userID, createUser, fetchUserData };

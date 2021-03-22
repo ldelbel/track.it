@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { userID, fetchUserData, createUser } from '../../api';
 import styles from './styles/Login.module.scss';
 import { setUser } from '../../actions';
 
@@ -28,7 +27,7 @@ const Login = props => {
         <div className={styles.content__input}>
           <span>Please enter your name</span>
           <input type="text" onChange={e => handleChange(e)}/>
-          <input type="submit" onClick={handleClick}/>
+          <input type="submit" value="Login" onClick={handleClick}/>
         </div>
       </div>
     </main>

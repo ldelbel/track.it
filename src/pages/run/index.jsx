@@ -5,6 +5,8 @@ import { useGeolocation } from 'react-use';
 import { useStopwatch } from 'react-timer-hook';
 import RunScreen from './RunScreen';
 import Input from './Input';
+import { connect } from 'react-redux';
+import { addRunningSession } from '../../actions';
 
 const Run = props => {
   var location = useGeolocation();
@@ -13,6 +15,8 @@ const Run = props => {
   const [breadcrumbs, setBreadcrumbs] = useState({ list: [] });
   const [goal,setGoal] = useState(0);
   const [percentage,setPercentage] = useState(0);
+  const [timestamp, setTimestamp] = useState(null);
+  const { addRunningSession } = props;
   const savedBreadCrumbs = useRef();
   const { start, pause, reset, seconds, minutes, hours } = useStopwatch({ autoStart: false });
   var running = '';
@@ -41,12 +45,16 @@ const Run = props => {
     running = setInterval(tick, 3000);
     setIsRunning(true);
     start();
+    setTimestamp(Date.now());
   }
 
   const stopRunningSession = () => {
     clearInterval(running);
     setIsRunning(false);
     pause();
+    const duration = 3600 * hours + 60 * minutes + seconds;
+    const session = createSessionObject(distance, duration,timestamp);
+    addRunningSession(session);
   }
 
   const addBreadcrumb = () => {
@@ -71,6 +79,11 @@ const Run = props => {
       var newDist = distance + haversine_distance(breadcrumbs.list[breadcrumbs.list.length-1], breadcrumbs.list[breadcrumbs.list.length-2])
       setDistance(newDist);
     }
+  }
+
+  const createSessionObject = (distance, duration, startTime) => {
+    const session = { distance: distance, duration: duration, start_time: startTime}
+    return session;
   }
 
   return (
@@ -98,4 +111,4 @@ Run.propTypes = {
 
 }
 
-export default Run;
+export default connect(state => state, { addRunningSession })(Run);

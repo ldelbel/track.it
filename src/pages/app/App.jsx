@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   useRouteMatch
@@ -20,16 +19,25 @@ const App = props => {
   const { addRunningSession, username, fillList } = props;
   let { path } = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(async ()=> {
+  
+  const load = async () => {
     const id = await userID(username);  
     const data = await fetchUserData(id);
     fillList(data);
     setIsLoading(false);
-  }, [])
+}
+
+  useEffect(() => {
+    load();
+    }, [])
 
   return (
-    <div className="App">
+    isLoading ?
+      ( <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'var(--blue)', height: '100vh'}}>
+          <Loading type='ball_triangle' width={200} height={200} fill='#fff' />
+        </main>
+      ):(
+      <div className="App">
       <Navbar />
       <Switch>
         <Route 
@@ -47,6 +55,7 @@ const App = props => {
       </Switch>
       <Menu />
     </div>
+    )
   );
 }
 
