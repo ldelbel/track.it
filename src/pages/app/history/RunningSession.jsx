@@ -4,12 +4,10 @@ import styles from './styles/RunningSession.module.scss';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const RunningSession = props => {
-  const { session } = props;
+const RunningSession = ({ session }) => {
   const date = new Date(session.start_time);
   let percentage = 0.0;
   session.goal ? percentage = 100 * (session.distance / session.goal) : percentage = 0;
-  console.log(session.distance)
 
   return (
     <div className={styles.container}>
@@ -43,7 +41,15 @@ const RunningSession = props => {
 }
 
 RunningSession.propTypes = {
-
+  session: PropTypes.shape({
+    id: PropTypes.number,
+    user: PropTypes.string,
+    distance: PropTypes.number,
+    duration: PropTypes.number,
+    avg_speed: PropTypes.number,
+    avg_pace: PropTypes.number,
+    goal: PropTypes.number,
+  })
 }
 
 export default RunningSession;

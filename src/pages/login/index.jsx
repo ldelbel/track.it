@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 import styles from './styles/Login.module.scss';
 import { setUser } from '../../actions';
 
-const Login = props => {
+const Login = ({ setUser }) => {
   const [name, setName] = useState();
-  const { setUser } = props;
   let history = useHistory();
 
   useEffect(()=>{
@@ -41,7 +40,7 @@ const Login = props => {
 }
 
 Login.propTypes = {
-
+  setUser: PropTypes.func,
 }
 
 export default connect(state => state, { setUser })(Login);

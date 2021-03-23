@@ -1,4 +1,3 @@
-/*global google*/
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useGeolocation } from 'react-use';
@@ -10,7 +9,7 @@ import { connect } from 'react-redux';
 import { addRunningSession } from '../../actions';
 import { postRunningSession } from '../../api';
 
-const Run = ({ addRunningSession, id, runningSessions }) => {
+const Run = ({ addRunningSession, id }) => {
   var location = useGeolocation();
   const [distance, setDistance] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -128,7 +127,8 @@ const Run = ({ addRunningSession, id, runningSessions }) => {
 }
 
 Run.propTypes = {
-
+  addRunningSession: PropTypes.func,
+  id: PropTypes.number
 }
 
 export default connect(state => state, { addRunningSession })(Run);

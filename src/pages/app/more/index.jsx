@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import styles from './styles/More.module.scss';
 
@@ -11,7 +10,6 @@ const More = () => {
     localStorage.removeItem('runningSessions');
     history.push('/');
   }
-
 
   return (
     <main className={styles.bg}>
@@ -25,10 +23,6 @@ const More = () => {
       </div>
     </main>
   )
-}
-
-More.propTypes = {
-
 }
 
 export default More;

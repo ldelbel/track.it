@@ -10,7 +10,7 @@ const Chart = ({ distancesPerDay }) => {
   })
 
   const labels = last30days.reverse();
-  const objToChart = labels.reduce((acc,curr)=> (acc[curr]=0,acc),{});
+  const objToChart = labels.reduce((acc,curr)=> (acc[curr]=0, acc),{});
 
   distancesPerDay.forEach(dist => {
     if(labels.includes(dist[0])){
@@ -46,7 +46,7 @@ const Chart = ({ distancesPerDay }) => {
 }
 
 Chart.propTypes = {
-
+  distancesPerDay: PropTypes.arrayOf(PropTypes.array),
 }
 
 export default Chart;

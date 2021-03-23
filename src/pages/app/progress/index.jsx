@@ -90,7 +90,17 @@ const Progress =({ runningSessions }) => {
 }
 
 Progress.propTypes = {
-
+  runningSessions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      user: PropTypes.string,
+      distance: PropTypes.number,
+      duration: PropTypes.number,
+      avg_speed: PropTypes.number,
+      avg_pace: PropTypes.number,
+      goal: PropTypes.number,
+  })
+  )
 }
 
 export default Progress;

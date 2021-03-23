@@ -5,6 +5,7 @@ import {
   useRouteMatch,
   useHistory
 } from "react-router-dom";
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Navbar from "../../common/components/Navbar";
 import History from "./history";
@@ -22,7 +23,6 @@ const App = props => {
   let { path } = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
   let history = useHistory();
-  const oldLocalData = localStorage.getItem('runningSessions');
 
   const loadFromBackend = async () => {
     const id = await userID(username);  
@@ -83,6 +83,23 @@ const App = props => {
     )
   );
 }
+
+App.propTypes = {
+  addRunningSession: PropTypes.func,
+  username: PropTypes.string,
+  fillList: PropTypes.func,
+  runningSessions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      user: PropTypes.string,
+      distance: PropTypes.number,
+      duration: PropTypes.number,
+      avg_speed: PropTypes.number,
+      avg_pace: PropTypes.number,
+      goal: PropTypes.number,
+  })
+  )
+} 
 
 export default connect(state => state, { addRunningSession, fillList })(App);
 

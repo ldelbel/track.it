@@ -82,7 +82,8 @@ const MenuOption = props => {
 }
 
 MenuOption.propTypes = {
-
+  page: PropTypes.string,
+  selected: PropTypes.bool
 }
 
 export default MenuOption;

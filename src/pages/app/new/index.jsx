@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import styles from './styles/New.module.scss';
 import img from '../../../common/assets/running.png';
 
-const New = props => {
+const New = () => {
   let history = useHistory();
 
   return (
@@ -20,10 +19,6 @@ const New = props => {
       </div>
     </main>
   );
-}
-
-New.propTypes = {
-
 }
 
 export default New;
