@@ -8,10 +8,10 @@ const Progress =({ runningSessions }) => {
   const allSpeeds = runningSessions.map(session => session.avg_speed);
   const allPaces = runningSessions.map(session => session.avg_pace);
   const allDistancesPerDay = runningSessions.map(session => [new Date(session.start_time).toDateString().slice(4,10), session.distance])
-  const speedOverallAvg = 0;
-  const speedMaxValue = 0;
-  const paceOverallAvg = 0;
-  const paceMaxValue = 0;
+  let speedOverallAvg = 0;
+  let speedMaxValue = 0;
+  let paceOverallAvg = 0;
+  let paceMaxValue = 0;
 
   if(allSpeeds.length){
     const speedTotal = allSpeeds.reduce((accumulator,currentValue) => accumulator + currentValue)

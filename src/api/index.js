@@ -48,25 +48,17 @@ const fetchUserData = async (id) => {
 }
 
 const postRunningSession = async (userID, session) => {
-  const data = { 
-    distance: session.distance,
-    duration: session.duration,
-    start_time: session.start_time,
-    goal: session.goal,
-    avg_speed: session.avg_speed,
-    avg_pace: session.avg_pace
-  }
   try {
     const req = await fetch(`https://track-it-api.herokuapp.com/users/${userID}/running_sessions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(session),
     });
 
     const oldLocalData = JSON.parse(localStorage.getItem('runningSessions'));
-    const newLocalData = oldLocalData.concat(data);
+    const newLocalData = oldLocalData.concat(session);
     localStorage.setItem('runningSessions', JSON.stringify(newLocalData));   
     const res = await req.json();
     return res;

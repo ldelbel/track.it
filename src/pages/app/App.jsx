@@ -10,6 +10,7 @@ import Navbar from "../../common/components/Navbar";
 import History from "./history";
 import Progress from "./progress";
 import New from "./new";
+import More from "./more";
 import Menu from "../../common/components/Menu";
 import { addRunningSession, fillList } from '../../actions';
 import { userID, fetchUserData } from '../../api';
@@ -71,6 +72,10 @@ const App = props => {
         <Route
         path={`${path}/progress`}
         render={props => <Progress {...props} runningSessions={runningSessions} /> }
+        />
+        <Route
+        path={`${path}/more`}
+        render={props => <More {...props} /> }
         />
       </Switch>
       <Menu />
