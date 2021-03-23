@@ -22,8 +22,7 @@ const MenuOption = props => {
   }, [selected])
 
   const handleClick = () => {
-    handleUpdateSelected(page);
-    page === 'new' ? (
+      page === 'new' ? (
       history.push(`/app/`)
     ) : (
       history.push(`/app/${page}`)

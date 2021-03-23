@@ -1,10 +1,7 @@
 const userID = async (user) => {
   try {
-  //   const req = await fetch(`https://track-it-api.herokuapp.com/users/find?` + new URLSearchParams({
-  //     name: user 
-  // }));
-    const req = await fetch(`http://localhost:3001/users/find?` + new URLSearchParams({
-        name: user 
+    const req = await fetch(`https://track-it-api.herokuapp.com/users/find?` + new URLSearchParams({
+      name: user 
     }));
     const res = await req.json();
     let id = 0;
@@ -24,20 +21,14 @@ const userID = async (user) => {
 const createUser = async (name) => {
   const data = { name: name }
   try {
-    // const req = await fetch(`https://track-it-api.herokuapp.com/users`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data),
-    // });
-    const req = await fetch(`http://localhost:3001/users`, {
+    const req = await fetch(`https://track-it-api.herokuapp.com/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
+    
     const res = await req.json();
     return res.id;
   } catch(err) {
@@ -48,8 +39,7 @@ const createUser = async (name) => {
 
 const fetchUserData = async (id) => {
   try {
-    // const req = await fetch(`https://track-it-api.herokuapp.com/users/${id}/running_sessions`, { mode: 'cors' });
-    const req = await fetch(`http://localhost:3001/users/${id}/running_sessions`, { mode: 'cors' });
+    const req = await fetch(`https://track-it-api.herokuapp.com/users/${id}/running_sessions`, { mode: 'cors' });
     const res = await req.json();
     return res;
   } catch(err) {
@@ -60,20 +50,14 @@ const fetchUserData = async (id) => {
 const postRunningSession = async (userID, session) => {
   const data = { distance: session.distance, duration: session.duration, start_time: session.start_time, goal: session.goal}
   try {
-    // const req = await fetch(`https://track-it-api.herokuapp.com/users/${userID}/running_sessions`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data),
-    // });
-    const req = await fetch(`http://localhost:3001/users/${userID}/running_sessions`, {
+    const req = await fetch(`https://track-it-api.herokuapp.com/users/${userID}/running_sessions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
+    
     
     const res = await req.json();
     return res;

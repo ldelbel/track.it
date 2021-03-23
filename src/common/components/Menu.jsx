@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styles from '../styles/Menu.module.scss';
 import MenuOption from './MenuOption';
 import fromEntries from 'object.fromentries';
 
 const Menu = () => {
+  const location = useLocation();
+
   const [selected, setSelected] = useState({
     new: true,
     history: false,
@@ -11,11 +14,34 @@ const Menu = () => {
     more: false,
   });
 
+  useEffect(()=>{
+    let key = '';
+    switch(location.pathname){
+      case '/app/':
+        key = 'new';
+        break;
+      case '/app/history':
+        key = 'history';
+        break;
+      case '/app/progress':
+        key = 'progress';
+        break;
+      case '/app/more':
+        key = 'more';
+        break;
+      default:
+        key = 'new';
+    }
+    handleUpdateSelected(key);
+  },[location])
+
+  console.log(location.pathname)
+
   if (!Object.fromEntries) {
     fromEntries.shim();
   }
 
-  const defValue = (keyToCompare, keyReference ,value) => {
+  const defValue = (keyToCompare, keyReference) => {
     return keyToCompare === keyReference ? true : false
   }
 

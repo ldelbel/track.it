@@ -3,21 +3,27 @@ import PropTypes from 'prop-types';
 import styles from './styles/Progress.module.scss';
 import Chart from './Chart';
 
-const Progress = props => {
-  const { runningSessions } = props;
+const Progress =({ runningSessions }) => {
 
   const allSpeeds = runningSessions.map(session => session.avg_speed);
   const allPaces = runningSessions.map(session => session.avg_pace);
   const allDistancesPerDay = runningSessions.map(session => [new Date(session.start_time).toDateString().slice(4,10), session.distance])
+  const speedOverallAvg = 0;
+  const speedMaxValue = 0;
+  const paceOverallAvg = 0;
+  const paceMaxValue = 0;
 
-  const speedTotal = allSpeeds.reduce((accumulator,currentValue) => accumulator + currentValue)
-  const speedOverallAvg = speedTotal / allSpeeds.length;
-  const speedMaxValue = Math.max(...allSpeeds);
+  if(allSpeeds.length){
+    const speedTotal = allSpeeds.reduce((accumulator,currentValue) => accumulator + currentValue)
+    speedOverallAvg = speedTotal / allSpeeds.length;
+    speedMaxValue = Math.max(...allSpeeds);
+  }
  
-  const paceTotal = allPaces.reduce((accumulator,currentValue) => accumulator + currentValue)
-  const paceOverallAvg = paceTotal / allPaces.length;
-  const paceMaxValue = Math.max(...allPaces);
- 
+  if(allPaces.length) {
+    const paceTotal = allPaces.reduce((accumulator,currentValue) => accumulator + currentValue)
+    paceOverallAvg = paceTotal / allPaces.length;
+    paceMaxValue = Math.max(...allPaces);
+  }
 
   return (
     <>
