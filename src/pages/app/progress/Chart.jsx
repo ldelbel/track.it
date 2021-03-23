@@ -31,11 +31,6 @@ const Chart = props => {
   
   const dataSet = Object.values(objToChart);
 
-
-  console.log(dataSet)
-
-  
-
   const data = {
     chartData: {
       labels: labels,

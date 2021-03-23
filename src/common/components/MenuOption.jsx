@@ -9,7 +9,7 @@ import styles from '../styles/MenuOption.module.scss';
 
 
 const MenuOption = props => {
-  const { page, selected , handleUpdateSelected } = props;
+  const { page, selected } = props;
   const [style, setStyle] = useState();
   let history = useHistory();
    

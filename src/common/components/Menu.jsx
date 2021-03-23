@@ -6,7 +6,6 @@ import fromEntries from 'object.fromentries';
 
 const Menu = () => {
   const location = useLocation();
-
   const [selected, setSelected] = useState({
     new: true,
     history: false,
@@ -35,7 +34,6 @@ const Menu = () => {
     handleUpdateSelected(key);
   },[location])
 
-  console.log(location.pathname)
 
   if (!Object.fromEntries) {
     fromEntries.shim();
@@ -59,10 +57,10 @@ const Menu = () => {
 
   return (
     <div className={styles.container}>
-      <MenuOption page={'new'} selected={selected.new} handleUpdateSelected={handleUpdateSelected} />
-      <MenuOption page={'history'} selected={selected.history} handleUpdateSelected={handleUpdateSelected} />
-      <MenuOption page={'progress'} selected={selected.progress} handleUpdateSelected={handleUpdateSelected} />
-      <MenuOption page={'more'} selected={selected.more} handleUpdateSelected={handleUpdateSelected} />
+      <MenuOption page={'new'} selected={selected.new} />
+      <MenuOption page={'history'} selected={selected.history} />
+      <MenuOption page={'progress'} selected={selected.progress} />
+      <MenuOption page={'more'} selected={selected.more} />
     </div>
   );
 }
