@@ -21,6 +21,7 @@ const App = props => {
   let { path } = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
   let history = useHistory();
+  const oldLocalData = localStorage.getItem('runningSessions');
 
   const loadFromBackend = async () => {
     const id = await userID(username);  

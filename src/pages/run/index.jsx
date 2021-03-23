@@ -63,11 +63,8 @@ const Run = ({ addRunningSession, id, runningSessions }) => {
     reset();
     const duration = hours + minutes / 60 + seconds / 3600;
     const session = createSessionObject(distance, duration, timestamp, goal);
-    console.log(runningSessions)
     addRunningSession(session);
-    console.log(runningSessions)
     postRunningSession(id, session);
-
   }
 
   const addBreadcrumb = () => {
