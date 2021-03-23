@@ -14,7 +14,7 @@ const Run = ({ addRunningSession, id }) => {
   const [distance, setDistance] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [breadcrumbs, setBreadcrumbs] = useState({ list: [] });
-  const [goal,setGoal] = useState(0.0);
+  const [goal,setGoal] = useState(0);
   const [percentage,setPercentage] = useState(0);
   const [timestamp, setTimestamp] = useState(null);
   const savedBreadCrumbs = useRef();
@@ -59,11 +59,21 @@ const Run = ({ addRunningSession, id }) => {
     clearInterval(running);
     setIsRunning(false);
     pause();
-    reset();
     const duration = hours + minutes / 60 + seconds / 3600;
     const session = createSessionObject(distance, duration, timestamp, goal);
     addRunningSession(session);
     postRunningSession(id, session);
+    finishSession();
+  }
+
+  const finishSession = () => {
+    setBreadcrumbs({ list: [] });
+    setGoal(0);
+    setPercentage(0);
+    setTimestamp(null);
+    setDistance(0);
+    reset();
+    history.push('/app/history');
   }
 
   const addBreadcrumb = () => {
