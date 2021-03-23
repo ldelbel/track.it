@@ -20,17 +20,30 @@ const App = props => {
   let { path } = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
 
-  const load = async () => {
+  const loadFromBackend = async () => {
     const id = await userID(username);  
     const data = await fetchUserData(id);
     fillList(id,data);
     localStorage.setItem('id', JSON.stringify(id));
     localStorage.setItem('runningSessions', JSON.stringify(data));
     setIsLoading(false);
-  }  
+  }
+
+  const loadFromLocalStorage = () => {
+    const id = JSON.parse(localStorage.getItem('id'));
+    const data = JSON.parse(localStorage.getItem('runningSessions'));
+    fillList(id,data);
+    setIsLoading(false);
+  }
 
   useEffect(() => {
-    load();
+    if(localStorage['runningSessions']){
+      loadFromLocalStorage();
+    } else {
+      loadFromBackend();
+    }
+
+
     }, [])
 
   return (

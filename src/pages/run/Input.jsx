@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styles from './styles/Input.module.scss';
+import { HiArrowNarrowLeft } from 'react-icons/hi';
+import { useHistory } from 'react-router-dom';
 
 const Input = props => {
   const {setGoal, startRunningSession} = props;
   const [number,setNumber] = useState({ n1: 0, n2: 0, n3: 0, n4: 0});
+  let history = useHistory();
 
   const defineGoal = () => {
     let goal = parseFloat(`${number.n1}${number.n2}.${number.n3}${number.n4}`);
@@ -15,6 +18,10 @@ const Input = props => {
   const handleClick = () => {
     defineGoal();
     startRunningSession();
+  }
+
+  const backToMenu = () => {
+    history.push('/app');
   }
 
   const addNumber = (num) => {
@@ -32,6 +39,7 @@ const Input = props => {
   return (
     <main className={styles.container}>
       <div className={styles.content}>
+        <div className={styles.arrow}><button onClick={backToMenu}><HiArrowNarrowLeft /></button></div>
         <span className={styles.content__title}>SET YOUR GOAL FOR TODAY</span>
         <div className={styles.content__inputs}>
           <div className={styles.input}>
