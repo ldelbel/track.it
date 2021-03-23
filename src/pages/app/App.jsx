@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import {
   Switch,
   Route,
-  useRouteMatch
+  useRouteMatch,
+  useHistory
 } from "react-router-dom";
 import { connect } from 'react-redux';
 import Navbar from "../../common/components/Navbar";
@@ -19,6 +20,7 @@ const App = props => {
   const { addRunningSession, username, fillList, runningSessions } = props;
   let { path } = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
+  let history = useHistory();
 
   const loadFromBackend = async () => {
     const id = await userID(username);  
@@ -37,19 +39,21 @@ const App = props => {
   }
 
   useEffect(() => {
-    if(localStorage['runningSessions']){
-      loadFromLocalStorage();
+    if(!localStorage['user']){
+      history.push('/');
     } else {
-      loadFromBackend();
-    }
-
-
-    }, [])
+      if(localStorage['runningSessions']){
+        loadFromLocalStorage();
+      } else {
+        loadFromBackend();
+      }
+    }    
+  }, [])
 
   return (
     isLoading ?
       ( <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'var(--blue)', height: '100vh'}}>
-          <Loading type='ball_triangle' width={200} height={200} fill='#fff' />
+          <Loading type='ball_triangle' width={100} height={100} fill='#fff' />
         </main>
       ):(
       <div className="App">

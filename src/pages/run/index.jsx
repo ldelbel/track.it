@@ -3,13 +3,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useGeolocation } from 'react-use';
 import { useStopwatch } from 'react-timer-hook';
+import { useHistory } from 'react-router-dom';
 import RunScreen from './RunScreen';
 import Input from './Input';
 import { connect } from 'react-redux';
 import { addRunningSession } from '../../actions';
 import { postRunningSession } from '../../api';
 
-const Run = props => {
+const Run = ({ addRunningSession, id, runningSessions }) => {
   var location = useGeolocation();
   const [distance, setDistance] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -17,10 +18,16 @@ const Run = props => {
   const [goal,setGoal] = useState(0.0);
   const [percentage,setPercentage] = useState(0);
   const [timestamp, setTimestamp] = useState(null);
-  const { addRunningSession, id} = props;
   const savedBreadCrumbs = useRef();
   const { start, pause, reset, seconds, minutes, hours } = useStopwatch({ autoStart: false });
+  let history = useHistory();
   var running = '';
+
+  useEffect(()=> {
+    if(!localStorage['user']){
+      history.push('/');
+    }
+  },[])
 
   useEffect(() => {
     if(!location.loading){
@@ -56,8 +63,11 @@ const Run = props => {
     reset();
     const duration = hours + minutes / 60 + seconds / 3600;
     const session = createSessionObject(distance, duration, timestamp, goal);
+    console.log(runningSessions)
     addRunningSession(session);
+    console.log(runningSessions)
     postRunningSession(id, session);
+
   }
 
   const addBreadcrumb = () => {

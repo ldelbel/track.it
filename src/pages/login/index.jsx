@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import styles from './styles/Login.module.scss';
 import { setUser } from '../../actions';
 
-
-
 const Login = props => {
   const [name, setName] = useState();
   const { setUser } = props;

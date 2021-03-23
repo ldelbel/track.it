@@ -57,8 +57,7 @@ const postRunningSession = async (userID, session) => {
       },
       body: JSON.stringify(data),
     });
-    
-    
+   
     const res = await req.json();
     return res;
   } catch(err) {
