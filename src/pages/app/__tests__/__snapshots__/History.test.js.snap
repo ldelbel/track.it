@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`history component renders correctly 1`] = `
+<main
+  className="bg"
+>
+  <div
+    className="container"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="container__leftdiv"
+      >
+        <div
+          className="container__leftdiv__progressbar"
+        >
+          <svg
+            className="CircularProgressbar "
+            data-test-id="CircularProgressbar"
+            style={Object {}}
+            viewBox="0 0 100 100"
+          >
+            <circle
+              className="CircularProgressbar-background"
+              cx={50}
+              cy={50}
+              r={50}
+              style={
+                Object {
+                  "fill": "#fff",
+                }
+              }
+            />
+            <path
+              className="CircularProgressbar-trail"
+              d="
+      M 50,50
+      m 0,-43
+      a 43,43 0 1 1 0,86
+      a 43,43 0 1 1 0,-86
+    "
+              fillOpacity={0}
+              strokeWidth="14"
+              style={
+                Object {
+                  "stroke": "#f3f3f3",
+                  "strokeDasharray": "270.1769682087222px 270.1769682087222px",
+                  "strokeDashoffset": "0px",
+                }
+              }
+            />
+            <path
+              className="CircularProgressbar-path"
+              d="
+      M 50,50
+      m 0,-43
+      a 43,43 0 1 1 0,86
+      a 43,43 0 1 1 0,-86
+    "
+              fillOpacity={0}
+              strokeWidth="14"
+              style={
+                Object {
+                  "stroke": "var(--green)",
+                  "strokeDasharray": "270.1769682087222px 270.1769682087222px",
+                  "strokeDashoffset": "0px",
+                }
+              }
+            />
+          </svg>
+        </div>
+        <div
+          className="container__leftdiv__info"
+        >
+          <span>
+            Invalid Date
+          </span>
+          <p>
+            100
+            % of the goal
+          </p>
+        </div>
+      </div>
+      <div
+        className="container__rightdiv"
+      >
+        <div
+          className="container__rightdiv__info"
+        >
+          <span>
+            1
+          </span>
+          <p>
+            km
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <div
+        className="container__leftdiv"
+      >
+        <div
+          className="container__leftdiv__progressbar"
+        >
+          <svg
+            className="CircularProgressbar "
+            data-test-id="CircularProgressbar"
+            style={Object {}}
+            viewBox="0 0 100 100"
+          >
+            <circle
+              className="CircularProgressbar-background"
+              cx={50}
+              cy={50}
+              r={50}
+              style={
+                Object {
+                  "fill": "#fff",
+                }
+              }
+            />
+            <path
+              className="CircularProgressbar-trail"
+              d="
+      M 50,50
+      m 0,-43
+      a 43,43 0 1 1 0,86
+      a 43,43 0 1 1 0,-86
+    "
+              fillOpacity={0}
+              strokeWidth="14"
+              style={
+                Object {
+                  "stroke": "#f3f3f3",
+                  "strokeDasharray": "270.1769682087222px 270.1769682087222px",
+                  "strokeDashoffset": "0px",
+                }
+              }
+            />
+            <path
+              className="CircularProgressbar-path"
+              d="
+      M 50,50
+      m 0,-43
+      a 43,43 0 1 1 0,86
+      a 43,43 0 1 1 0,-86
+    "
+              fillOpacity={0}
+              strokeWidth="14"
+              style={
+                Object {
+                  "stroke": "var(--green)",
+                  "strokeDasharray": "270.1769682087222px 270.1769682087222px",
+                  "strokeDashoffset": "0px",
+                }
+              }
+            />
+          </svg>
+        </div>
+        <div
+          className="container__leftdiv__info"
+        >
+          <span>
+            Invalid Date
+          </span>
+          <p>
+            100
+            % of the goal
+          </p>
+        </div>
+      </div>
+      <div
+        className="container__rightdiv"
+      >
+        <div
+          className="container__rightdiv__info"
+        >
+          <span>
+            2
+          </span>
+          <p>
+            km
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+`;

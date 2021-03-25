@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`progress component renders correctly 1`] = `
+<main
+  className="container"
+>
+  <div
+    className="content"
+  >
+    <div
+      className="content__title"
+    >
+      Your Progress
+    </div>
+    <div
+      className="content__chart"
+    >
+      <Chart
+        distancesPerDay={
+          Array [
+            Array [
+              "Mar 24",
+              1,
+            ],
+            Array [
+              "Mar 24",
+              2,
+            ],
+          ]
+        }
+      />
+    </div>
+    <div
+      className="section"
+    >
+      <div
+        className="section__title"
+      >
+        Overall
+      </div>
+      <div
+        className="section__info"
+      >
+        <div
+          className="section__info__item"
+        >
+          <span>
+            Avg Speed
+          </span>
+          <div
+            className="section__info__item__div"
+            div={true}
+          >
+            <div>
+              <span>
+                1.5
+              </span>
+              <p>
+                km/h
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="section__info__item"
+        >
+          <span>
+            Avg Pace
+          </span>
+          <div
+            className="section__info__item__div"
+            div={true}
+          >
+            <div>
+              <span>
+                1.5
+              </span>
+              <p>
+                h/km
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="section"
+    >
+      <div
+        className="section__title"
+      >
+        Personal Best
+      </div>
+      <div
+        className="section__info"
+      >
+        <div
+          className="section__info__item"
+        >
+          <span>
+            Speed
+          </span>
+          <div
+            className="section__info__item__div"
+            div={true}
+          >
+            <div>
+              <span>
+                2
+              </span>
+              <p>
+                km/h
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="section__info__item"
+        >
+          <span>
+            Pace
+          </span>
+          <div
+            className="section__info__item__div"
+            div={true}
+          >
+            <div>
+              <span>
+                2
+              </span>
+              <p>
+                h/km
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+`;

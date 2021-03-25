@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login page renders correctly 1`] = `
+<main
+  className="container"
+>
+  <div
+    className="content"
+  >
+    <h1
+      className="content__title"
+    >
+      Track.it
+    </h1>
+    <div
+      className="content__input"
+    >
+      <span>
+        Please enter your name
+      </span>
+      <input
+        onChange={[Function]}
+        type="text"
+      />
+      <input
+        onClick={[Function]}
+        type="submit"
+        value="Login"
+      />
+    </div>
+  </div>
+</main>
+`;

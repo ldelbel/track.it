@@ -7,7 +7,6 @@ import { RiMoreFill } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
 import styles from '../styles/MenuOption.module.scss';
 
-
 const MenuOption = props => {
   const { page, selected } = props;
   const [style, setStyle] = useState();

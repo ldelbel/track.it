@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`new component renders correctly 1`] = `
+<main
+  className="bg"
+>
+  <div
+    className="container"
+  >
+    <img
+      alt="run"
+      className="img"
+      src="running.png"
+    />
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      New Running Session
+    </button>
+  </div>
+</main>
+`;

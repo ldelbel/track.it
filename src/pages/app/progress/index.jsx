@@ -94,6 +94,7 @@ Progress.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       user: PropTypes.string,
+      start_time: PropTypes.number,
       distance: PropTypes.number,
       duration: PropTypes.number,
       avg_speed: PropTypes.number,
