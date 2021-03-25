@@ -16,13 +16,20 @@ exports[`login page renders correctly 1`] = `
       className="content__input"
     >
       <span>
-        Please enter your name
+        Enter your name
       </span>
       <input
+        data-testid="input"
         onChange={[Function]}
         type="text"
       />
+      <p
+        className="hidden"
+      >
+        Please provide a name to login
+      </p>
       <input
+        data-testid="login"
         onClick={[Function]}
         type="submit"
         value="Login"

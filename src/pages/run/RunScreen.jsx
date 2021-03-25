@@ -44,9 +44,7 @@ RunScreen.propTypes = {
   distance: PropTypes.number,
   stopRunningSession: PropTypes.func,
   goal: PropTypes.number,
-  clock: PropTypes.oneOfType(
-    PropTypes.objectOf(PropTypes.number)
-  ),
+  clock: PropTypes.objectOf(PropTypes.number),
 }
 
 export default RunScreen;

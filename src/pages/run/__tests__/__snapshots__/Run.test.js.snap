@@ -69,6 +69,7 @@ exports[`run page renders correctly 1`] = `
       >
         <button
           className="input__btn_add"
+          data-testid="plusOneKm"
           onClick={[Function]}
         >
           +
