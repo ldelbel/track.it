@@ -5,8 +5,7 @@ import styles from './styles/Input.module.scss';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 import { useHistory } from 'react-router-dom';
 
-const Input = props => {
-  const {setGoal, startRunningSession} = props;
+const Input = ({setGoal, startRunningSession}) => {
   const [number,setNumber] = useState({ n1: 0, n2: 0, n3: 0, n4: 0});
   let history = useHistory();
 
@@ -56,7 +55,9 @@ const Input = props => {
           <div className={styles.input}>
             <button
             onClick={() => addNumber('n2')}
-            className={styles.input__btn_add}>+</button>
+            className={styles.input__btn_add}
+            data-testid={'plusOneKm'}
+            >+</button>
             <div className={styles.input__display}>
               {number.n2}
             </div>
@@ -100,7 +101,8 @@ const Input = props => {
 }
 
 Input.propTypes = {
-
+  setGoal: PropTypes.func,
+  startRunningSession: PropTypes.func,
 }
 
 export default Input;

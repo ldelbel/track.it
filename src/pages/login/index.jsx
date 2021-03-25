@@ -41,10 +41,9 @@ const Login = ({ setUser }) => {
         <h1 className={styles.content__title}>Track.it</h1>
         <div className={styles.content__input}>
           <span>Enter your name</span>
-          <input type="text" onChange={e => handleChange(e)}/>
+          <input type="text" onChange={e => handleChange(e)} data-testid={'input'} />
           <p className={errorStyle}>Please provide a name to login</p>
           <input type="submit" value="Login" onClick={handleClick} data-testid={'login'} />
-
         </div>
       </div>
     </main>
