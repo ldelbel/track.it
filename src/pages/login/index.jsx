@@ -7,6 +7,8 @@ import { setUser } from '../../actions';
 
 const Login = ({ setUser }) => {
   const [name, setName] = useState();
+  const [error,setError] = useState(false);
+  const [errorStyle, setErrorStyle] = useState(styles.hidden)
   let history = useHistory();
 
   useEffect(()=>{
@@ -16,13 +18,21 @@ const Login = ({ setUser }) => {
   }, [])
 
   const handleChange = (e) => {
+    if(e.target.value){
+      setErrorStyle(styles.hidden)
+    }
     setName(e.target.value);
   }
 
   const handleClick = () => {
-    setUser(name);
-    localStorage.setItem('user', name);
-    history.push('/app');
+    if(!name){
+      setErrorStyle(styles.error);
+    } else {
+      setUser(name);
+      localStorage.setItem('user', name);
+      history.push('/app');
+    }
+
   }
   
   return (
@@ -30,9 +40,11 @@ const Login = ({ setUser }) => {
       <div className={styles.content}>
         <h1 className={styles.content__title}>Track.it</h1>
         <div className={styles.content__input}>
-          <span>Please enter your name</span>
+          <span>Enter your name</span>
           <input type="text" onChange={e => handleChange(e)}/>
-          <input type="submit" value="Login" onClick={handleClick}/>
+          <p className={errorStyle}>Please provide a name to login</p>
+          <input type="submit" value="Login" onClick={handleClick} data-testid={'login'} />
+
         </div>
       </div>
     </main>
