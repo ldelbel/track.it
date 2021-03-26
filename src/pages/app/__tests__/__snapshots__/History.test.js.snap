@@ -78,7 +78,7 @@ exports[`history component renders correctly 1`] = `
             Invalid Date
           </span>
           <p>
-            100
+            100.00
             % of the goal
           </p>
         </div>
@@ -169,7 +169,7 @@ exports[`history component renders correctly 1`] = `
             Invalid Date
           </span>
           <p>
-            100
+            100.00
             % of the goal
           </p>
         </div>

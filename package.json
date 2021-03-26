@@ -66,13 +66,21 @@
     "start": "react-scripts start",
     "dev": "react-scripts start --dev",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js --ext .jsx --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+  "collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "!**/node_modules/**",
+    "!**/vendor/**",
+    "!**/src/index.js",
+    "!**/src/Routes.js"
+  ]},
   "browserslist": {
     "production": [
       ">0.2%",

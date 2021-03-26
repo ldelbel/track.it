@@ -21,12 +21,12 @@ jest.mock('react-router-dom', () => ({
 
 describe('menuOption component', () => {
   it('renders correctly', () => {
-    const menuOption = renderer.create(<MenuOption />).toJSON();
+    const menuOption = renderer.create(<MenuOption page="new" selected />).toJSON();
     expect(menuOption).toMatchSnapshot();
   });
 
   it('is a button', () => {
-    const { container } = render(<MenuOption />);
+    const { container } = render(<MenuOption page="new" selected={false} />);
     expect(container.firstChild.nodeName).toBe('BUTTON');
   });
 
@@ -34,7 +34,7 @@ describe('menuOption component', () => {
     it('redirects to /app if it is MenuOption(New)', () => {
       const { getByRole } = render(
         <MemoryRouter>
-          <MenuOption page="new" />
+          <MenuOption page="new" selected />
         </MemoryRouter>,
       );
       fireEvent.click(getByRole('button'));
@@ -44,7 +44,7 @@ describe('menuOption component', () => {
     it('redirects to /app/history if it is MenuOption(History)', () => {
       const { getByRole } = render(
         <MemoryRouter>
-          <MenuOption page="history" />
+          <MenuOption page="history" selected />
         </MemoryRouter>,
       );
       fireEvent.click(getByRole('button'));
@@ -54,7 +54,7 @@ describe('menuOption component', () => {
     it('redirects to /app/progress if it is MenuOption(Progress)', () => {
       const { getByRole } = render(
         <MemoryRouter>
-          <MenuOption page="progress" />
+          <MenuOption page="progress" selected />
         </MemoryRouter>,
       );
       fireEvent.click(getByRole('button'));
@@ -64,7 +64,7 @@ describe('menuOption component', () => {
     it('redirects to /app/more if it is MenuOption(More)', () => {
       const { getByRole } = render(
         <MemoryRouter>
-          <MenuOption page="more" />
+          <MenuOption page="more" selected />
         </MemoryRouter>,
       );
       fireEvent.click(getByRole('button'));

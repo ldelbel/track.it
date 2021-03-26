@@ -24,6 +24,6 @@ describe('menu component', () => {
 
   it('contains MenuOptions as children', () => {
     const wrapper = shallow(<Menu store={store} />);
-    expect(wrapper.containsMatchingElement(<MenuOption />)).toEqual(true);
+    expect(wrapper.containsMatchingElement(<MenuOption page="more" selected={false} />)).toEqual(true);
   });
 });

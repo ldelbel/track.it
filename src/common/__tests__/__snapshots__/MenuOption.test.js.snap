@@ -51,7 +51,7 @@ exports[`menuOption component renders correctly 1`] = `
       </svg>
     </span>
     <p>
-      
+      New Run
     </p>
   </div>
 </button>

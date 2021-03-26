@@ -37,7 +37,10 @@ const Chart = ({ distancesPerDay }) => {
   };
 
   return (
-    <div style={{ position: 'relative', width: '90vw' }}>
+    <div style={{
+      position: 'relative', width: '90vw', maxWidth: '500px',
+    }}
+    >
       <Bar
         data={data.chartData}
         options={{ maintainAspectRatio: true }}

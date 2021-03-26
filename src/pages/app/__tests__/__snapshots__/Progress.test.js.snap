@@ -52,7 +52,7 @@ exports[`progress component renders correctly 1`] = `
           >
             <div>
               <span>
-                1.5
+                1.50
               </span>
               <p>
                 km/h
@@ -71,7 +71,7 @@ exports[`progress component renders correctly 1`] = `
           >
             <div>
               <span>
-                1.5
+                1.50
               </span>
               <p>
                 h/km
@@ -103,7 +103,7 @@ exports[`progress component renders correctly 1`] = `
           >
             <div>
               <span>
-                2
+                2.00
               </span>
               <p>
                 km/h
@@ -122,7 +122,7 @@ exports[`progress component renders correctly 1`] = `
           >
             <div>
               <span>
-                2
+                2.00
               </span>
               <p>
                 h/km

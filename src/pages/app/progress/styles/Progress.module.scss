@@ -1,11 +1,11 @@
 .container {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f3f4f6;
-  padding-bottom: 3rem;
+  padding: 3rem 0;
 }
 
 .content {
@@ -77,9 +77,17 @@
 
           p {
             font-size: 0.6rem;
+            text-align: center;
+            font-weight: 600;
           }
         }
       }
     }
+  }
+}
+
+@media(min-width: 720px){
+  .container {
+   padding: 3rem;
   }
 }
