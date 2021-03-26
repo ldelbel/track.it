@@ -4,21 +4,22 @@ import styles from './styles/New.module.scss';
 import img from '../../../common/assets/running.png';
 
 const New = () => {
-  let history = useHistory();
+  const history = useHistory();
 
   return (
     <main className={styles.bg}>
       <div className={styles.container}>
-        <img className={styles.img} src={img} alt="run"/>
+        <img className={styles.img} src={img} alt="run" />
         <button
-        className={styles.button}
-        onClick={() => history.push('/run')}
+          type="button"
+          className={styles.button}
+          onClick={() => history.push('/run')}
         >
           New Running Session
         </button>
       </div>
     </main>
   );
-}
+};
 
 export default New;

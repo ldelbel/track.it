@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import fromEntries from 'object.fromentries';
 import styles from '../styles/Menu.module.scss';
 import MenuOption from './MenuOption';
-import fromEntries from 'object.fromentries';
 
 const Menu = () => {
   const location = useLocation();
@@ -13,9 +13,23 @@ const Menu = () => {
     more: false,
   });
 
-  useEffect(()=>{
+  const defValue = (keyToCompare, keyReference) => (keyToCompare === keyReference);
+
+  const toggle = (obj, key, fn) => (
+    Object.fromEntries(
+      Object.entries(obj).map(
+        ([k, v]) => [k, fn(k, key, v)],
+      ),
+    )
+  );
+
+  const handleUpdateSelected = (key) => {
+    setSelected(toggle(selected, key, defValue));
+  };
+
+  useEffect(() => {
     let key = '';
-    switch(location.pathname){
+    switch (location.pathname) {
       case '/app/':
         key = 'new';
         break;
@@ -32,37 +46,20 @@ const Menu = () => {
         key = 'new';
     }
     handleUpdateSelected(key);
-  },[location])
-
+  }, [location]);
 
   if (!Object.fromEntries) {
     fromEntries.shim();
   }
 
-  const defValue = (keyToCompare, keyReference) => {
-    return keyToCompare === keyReference ? true : false
-  }
-
-  const toggle = (obj, key, fn) => (
-    Object.fromEntries(
-      Object.entries(obj).map(
-        ([k, v]) => [k, fn(k,key,v)]
-      )
-    )
-  )
-
-  const handleUpdateSelected = (key) => {
-    setSelected(toggle(selected,key, defValue))
-  }
-
   return (
     <div className={styles.container}>
-      <MenuOption page={'new'} selected={selected.new} />
-      <MenuOption page={'history'} selected={selected.history} />
-      <MenuOption page={'progress'} selected={selected.progress} />
-      <MenuOption page={'more'} selected={selected.more} />
+      <MenuOption page="new" selected={selected.new} />
+      <MenuOption page="history" selected={selected.history} />
+      <MenuOption page="progress" selected={selected.progress} />
+      <MenuOption page="more" selected={selected.more} />
     </div>
   );
-}
+};
 
 export default Menu;

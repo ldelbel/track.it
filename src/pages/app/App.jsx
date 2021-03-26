@@ -3,91 +3,95 @@ import {
   Switch,
   Route,
   useRouteMatch,
-  useHistory
-} from "react-router-dom";
+  useHistory,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Navbar from "../../common/components/Navbar";
-import History from "./history";
-import Progress from "./progress";
-import New from "./new";
-import More from "./more";
-import Menu from "../../common/components/Menu";
+import Loading from 'react-loading-components';
+import Navbar from '../../common/components/Navbar';
+import History from './history';
+import Progress from './progress';
+import New from './new';
+import More from './more';
+import Menu from '../../common/components/Menu';
 import { addRunningSession, fillList } from '../../actions';
 import { userID, fetchUserData } from '../../api';
-import Loading from 'react-loading-components';
 
-
-const App = props => {
-  const { addRunningSession, username, fillList, runningSessions } = props;
-  let { path } = useRouteMatch();
+const App = (props) => {
+  const {
+    addRunningSession, username, fillList, runningSessions,
+  } = props;
+  const { path } = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
-  let history = useHistory();
+  const history = useHistory();
 
   const loadFromBackend = async () => {
-    const id = await userID(username);  
+    const id = await userID(username);
     const data = await fetchUserData(id);
-    fillList(id,data);
+    fillList(id, data);
     localStorage.setItem('id', JSON.stringify(id));
     localStorage.setItem('runningSessions', JSON.stringify(data));
     setIsLoading(false);
-  }
+  };
 
   const loadFromLocalStorage = () => {
     const id = JSON.parse(localStorage.getItem('id'));
     const data = JSON.parse(localStorage.getItem('runningSessions'));
-    fillList(id,data);
+    fillList(id, data);
     setIsLoading(false);
-  }
+  };
 
   useEffect(() => {
-    if(!localStorage['user']){
+    if (!localStorage.user) {
       history.push('/');
+    } else if (localStorage.runningSessions) {
+      loadFromLocalStorage();
     } else {
-      if(localStorage['runningSessions']){
-        loadFromLocalStorage();
-      } else {
-        loadFromBackend();
-      }
-    }    
-  }, [])
+      loadFromBackend();
+    }
+  }, []);
 
   return (
-    isLoading ?
-      ( <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'var(--blue)', height: '100vh'}}>
-          <Loading type='ball_triangle' width={100} height={100} fill='#fff' />
+    isLoading
+      ? (
+        <main style={{
+          display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'var(--blue)', height: '100vh',
+        }}
+        >
+          <Loading type="ball_triangle" width={100} height={100} fill="#fff" />
         </main>
-      ):(
-      <div className="App">
-      <Navbar />
-      <Switch>
-        <Route 
-        exact path={path}
-        render={props => <New {...props} addRunningSession={addRunningSession} /> }
-        />
-        <Route 
-        path={`${path}/history`}
-        render={props => <History {...props} runningSessions={runningSessions} /> }
-        />
-        <Route
-        path={`${path}/progress`}
-        render={props => <Progress {...props} runningSessions={runningSessions} /> }
-        />
-        <Route
-        path={`${path}/more`}
-        render={props => <More {...props} /> }
-        />
-      </Switch>
-      <Menu />
-    </div>
-    )
+      ) : (
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route
+              exact
+              path={path}
+              render={() => <New addRunningSession={addRunningSession} />}
+            />
+            <Route
+              path={`${path}/history`}
+              render={() => <History runningSessions={runningSessions} />}
+            />
+            <Route
+              path={`${path}/progress`}
+              render={() => <Progress runningSessions={runningSessions} />}
+            />
+            <Route
+              path={`${path}/more`}
+              render={() => <More />}
+            />
+          </Switch>
+          <Menu />
+        </div>
+      )
   );
-}
+};
 
 App.propTypes = {
-  addRunningSession: PropTypes.func,
-  username: PropTypes.string,
-  fillList: PropTypes.func,
+  addRunningSession: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+  fillList: PropTypes.func.isRequired,
   runningSessions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -98,9 +102,8 @@ App.propTypes = {
       avg_speed: PropTypes.number,
       avg_pace: PropTypes.number,
       goal: PropTypes.number,
-  })
-  )
-} 
+    }),
+  ).isRequired,
+};
 
-export default connect(state => state, { addRunningSession, fillList })(App);
-
+export default connect((state) => state, { addRunningSession, fillList })(App);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { AiOutlinePlus, AiOutlineHistory, AiFillPieChart } from 'react-icons/ai';
@@ -7,49 +7,49 @@ import { RiMoreFill } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
 import styles from '../styles/MenuOption.module.scss';
 
-const MenuOption = props => {
+const MenuOption = (props) => {
   const { page, selected } = props;
   const [style, setStyle] = useState();
-  let history = useHistory();
-   
-  useEffect(()=>{
-    selected ? (
-      setStyle(styles.container_selected)
-    ) : (
-      setStyle(styles.container_notselected)
-    )
-  }, [selected])
+  const history = useHistory();
+
+  useEffect(() => {
+    if (selected) {
+      setStyle(styles.container_selected);
+    } else {
+      setStyle(styles.container_notselected);
+    }
+  }, [selected]);
 
   const handleClick = () => {
-      page === 'new' ? (
-      history.push(`/app/`)
-    ) : (
-      history.push(`/app/${page}`)
-    )
-  }
+    if (page === 'new') {
+      history.push('/app/');
+    } else {
+      history.push(`/app/${page}`);
+    }
+  };
 
   let content = (
     <>
-      <IconContext.Provider value={{ 'size': '0.6em'}}>
-        <AiOutlinePlus /> 
-      </IconContext.Provider>          
+      <IconContext.Provider value={{ size: '0.6em' }}>
+        <AiOutlinePlus />
+      </IconContext.Provider>
       <FaRunning />
     </>
   );
 
   let name = '';
 
-  switch(page) {
+  switch (page) {
     case 'new':
       content = (
         <>
-          <IconContext.Provider value={{ 'size': '0.6em'}}>
-            <AiOutlinePlus /> 
-          </IconContext.Provider>          
+          <IconContext.Provider value={{ size: '0.6em' }}>
+            <AiOutlinePlus />
+          </IconContext.Provider>
           <FaRunning />
         </>
       );
-      name = 'New Run'
+      name = 'New Run';
       break;
     case 'history':
       content = <AiOutlineHistory />;
@@ -65,11 +65,13 @@ const MenuOption = props => {
       break;
     default:
   }
-    
+
   return (
     <button
-    className={style}
-    onClick={handleClick}>
+      type="button"
+      className={style}
+      onClick={handleClick}
+    >
       <div>
         <span>
           {content}
@@ -78,11 +80,11 @@ const MenuOption = props => {
       </div>
     </button>
   );
-}
+};
 
 MenuOption.propTypes = {
-  page: PropTypes.string,
-  selected: PropTypes.bool
-}
+  page: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
+};
 
 export default MenuOption;

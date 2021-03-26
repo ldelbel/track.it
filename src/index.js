@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './common/styles/global.scss';
-import Routes from './Routes';
 import { Provider } from 'react-redux';
+import Routes from './Routes';
 import store from './store/store';
 
 ReactDOM.render(
@@ -11,7 +11,5 @@ ReactDOM.render(
       <Routes />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
-
-

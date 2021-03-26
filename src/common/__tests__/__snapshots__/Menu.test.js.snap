@@ -6,6 +6,7 @@ exports[`menu component renders correctly 1`] = `
 >
   <button
     onClick={[Function]}
+    type="button"
   >
     <div>
       <span>
@@ -59,6 +60,7 @@ exports[`menu component renders correctly 1`] = `
   </button>
   <button
     onClick={[Function]}
+    type="button"
   >
     <div>
       <span>
@@ -88,6 +90,7 @@ exports[`menu component renders correctly 1`] = `
   </button>
   <button
     onClick={[Function]}
+    type="button"
   >
     <div>
       <span>
@@ -117,6 +120,7 @@ exports[`menu component renders correctly 1`] = `
   </button>
   <button
     onClick={[Function]}
+    type="button"
   >
     <div>
       <span>

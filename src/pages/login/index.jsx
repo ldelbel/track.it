@@ -7,51 +7,49 @@ import { setUser } from '../../actions';
 
 const Login = ({ setUser }) => {
   const [name, setName] = useState();
-  const [error,setError] = useState(false);
-  const [errorStyle, setErrorStyle] = useState(styles.hidden)
-  let history = useHistory();
+  const [errorStyle, setErrorStyle] = useState(styles.hidden);
+  const history = useHistory();
 
-  useEffect(()=>{
-    if(localStorage['user']) {
-      history.push('./app')
+  useEffect(() => {
+    if (localStorage.user) {
+      history.push('./app');
     }
-  }, [])
+  }, []);
 
   const handleChange = (e) => {
-    if(e.target.value){
-      setErrorStyle(styles.hidden)
+    if (e.target.value) {
+      setErrorStyle(styles.hidden);
     }
     setName(e.target.value);
-  }
+  };
 
   const handleClick = () => {
-    if(!name){
+    if (!name) {
       setErrorStyle(styles.error);
     } else {
       setUser(name);
       localStorage.setItem('user', name);
       history.push('/app');
     }
+  };
 
-  }
-  
   return (
     <main className={styles.container}>
       <div className={styles.content}>
         <h1 className={styles.content__title}>Track.it</h1>
         <div className={styles.content__input}>
           <span>Enter your name</span>
-          <input type="text" onChange={e => handleChange(e)} data-testid={'input'} />
+          <input type="text" onChange={(e) => handleChange(e)} data-testid="input" />
           <p className={errorStyle}>Please provide a name to login</p>
-          <input type="submit" value="Login" onClick={handleClick} data-testid={'login'} />
+          <input type="submit" value="Login" onClick={handleClick} data-testid="login" />
         </div>
       </div>
     </main>
   );
-}
+};
 
 Login.propTypes = {
-  setUser: PropTypes.func,
-}
+  setUser: PropTypes.func.isRequired,
+};
 
-export default connect(state => state, { setUser })(Login);
+export default connect((state) => state, { setUser })(Login);

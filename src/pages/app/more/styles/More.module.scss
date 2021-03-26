@@ -1,24 +1,24 @@
 .bg {
-    background: #F3F4F6;
-    min-height: 90vh;
-    padding: 2rem 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  background: #f3f4f6;
+  min-height: 90vh;
+  padding: 2rem 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .button {
-    border: none;
-    font-size: 1.7rem;
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-    background-color: #dc143c;
-    color: white;
-    font-weight: 600;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  border: none;
+  font-size: 1.7rem;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  background-color: #dc143c;
+  color: white;
+  font-weight: 600;
+}

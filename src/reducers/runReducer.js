@@ -3,25 +3,23 @@ import { ADD_RUNNING_SESSION, SET_USER, FILL_LIST } from '../actions';
 let initialState = {
   id: 0,
   username: '',
-  runningSessions: []
-}
+  runningSessions: [],
+};
 
-if(localStorage['user']){
+if (localStorage.user) {
   initialState = {
-    id: localStorage['id'],
-    username: localStorage['user'],
-    runningSessions: localStorage['runningSessions']
-  }
+    id: localStorage.id,
+    username: localStorage.user,
+    runningSessions: JSON.parse(localStorage.runningSessions),
+  };
 }
 
 const runReducer = (state = initialState, action) => {
-  switch(action.type){
+  switch (action.type) {
     case ADD_RUNNING_SESSION:
-      const newList = state.runningSessions.concat(action.payload)
-
       return {
         ...state,
-        runningSessions: newList,
+        runningSessions: state.runningSessions.concat(action.payload),
       };
     case SET_USER:
       return {
@@ -37,6 +35,6 @@ const runReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default runReducer;

@@ -15,7 +15,6 @@
   justify-content: center;
   align-items: center;
 
-
   &__inputs {
     width: 100%;
     display: flex;
@@ -47,15 +46,16 @@
 
     &_add {
       @extend .input__btn;
+
       background: var(--green);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-
     }
-  
+
     &_sub {
       @extend .input__btn;
-      background: #F7284D;
+
+      background: #f7284d;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
     }
@@ -109,14 +109,11 @@
 .arrow {
   width: 100%;
   text-align: left;
-  
+
   button {
     font-size: 2rem;
     color: white;
     border: none;
     background: transparent;
   }
-
 }
-
-

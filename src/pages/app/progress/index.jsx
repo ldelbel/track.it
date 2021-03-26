@@ -3,24 +3,25 @@ import PropTypes from 'prop-types';
 import styles from './styles/Progress.module.scss';
 import Chart from './Chart';
 
-const Progress =({ runningSessions }) => {
-
-  const allSpeeds = runningSessions.map(session => session.avg_speed);
-  const allPaces = runningSessions.map(session => session.avg_pace);
-  const allDistancesPerDay = runningSessions.map(session => [new Date(session.start_time).toDateString().slice(4,10), session.distance])
+const Progress = ({ runningSessions }) => {
+  const allSpeeds = runningSessions.map((session) => session.avg_speed);
+  const allPaces = runningSessions.map((session) => session.avg_pace);
+  const allDistancesPerDay = runningSessions.map((session) => (
+    [new Date(session.start_time).toDateString().slice(4, 10), session.distance]
+  ));
   let speedOverallAvg = 0;
   let speedMaxValue = 0;
   let paceOverallAvg = 0;
   let paceMaxValue = 0;
 
-  if(allSpeeds.length){
-    const speedTotal = allSpeeds.reduce((accumulator,currentValue) => accumulator + currentValue)
+  if (allSpeeds.length) {
+    const speedTotal = allSpeeds.reduce((accumulator, currentValue) => accumulator + currentValue);
     speedOverallAvg = speedTotal / allSpeeds.length;
     speedMaxValue = Math.max(...allSpeeds);
   }
- 
-  if(allPaces.length) {
-    const paceTotal = allPaces.reduce((accumulator,currentValue) => accumulator + currentValue)
+
+  if (allPaces.length) {
+    const paceTotal = allPaces.reduce((accumulator, currentValue) => accumulator + currentValue);
     paceOverallAvg = paceTotal / allPaces.length;
     paceMaxValue = Math.max(...allPaces);
   }
@@ -40,7 +41,7 @@ const Progress =({ runningSessions }) => {
             <div className={styles.section__info}>
               <div className={styles.section__info__item}>
                 <span>Avg Speed</span>
-                <div div className={styles.section__info__item__div}>
+                <div className={styles.section__info__item__div}>
                   <div>
                     <span>{speedOverallAvg}</span>
                     <p>km/h</p>
@@ -49,7 +50,7 @@ const Progress =({ runningSessions }) => {
               </div>
               <div className={styles.section__info__item}>
                 <span>Avg Pace</span>
-                <div div className={styles.section__info__item__div}>
+                <div className={styles.section__info__item__div}>
                   <div>
                     <span>{paceOverallAvg}</span>
                     <p>h/km</p>
@@ -65,7 +66,7 @@ const Progress =({ runningSessions }) => {
             <div className={styles.section__info}>
               <div className={styles.section__info__item}>
                 <span>Speed</span>
-                <div div className={styles.section__info__item__div}>
+                <div className={styles.section__info__item__div}>
                   <div>
                     <span>{speedMaxValue}</span>
                     <p>km/h</p>
@@ -74,7 +75,7 @@ const Progress =({ runningSessions }) => {
               </div>
               <div className={styles.section__info__item}>
                 <span>Pace</span>
-                <div div className={styles.section__info__item__div}> 
+                <div className={styles.section__info__item__div}>
                   <div>
                     <span>{paceMaxValue}</span>
                     <p>h/km</p>
@@ -87,7 +88,7 @@ const Progress =({ runningSessions }) => {
       </main>
     </>
   );
-}
+};
 
 Progress.propTypes = {
   runningSessions: PropTypes.arrayOf(
@@ -100,8 +101,8 @@ Progress.propTypes = {
       avg_speed: PropTypes.number,
       avg_pace: PropTypes.number,
       goal: PropTypes.number,
-  })
-  )
-}
+    }),
+  ).isRequired,
+};
 
 export default Progress;

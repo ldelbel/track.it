@@ -25,9 +25,9 @@
   font-size: 0.75rem;
 }
 
-
 .container_notselected {
   @extend .cont;
+
   background: transparent;
   color: var(--dark3);
 
@@ -46,6 +46,7 @@
 
 .container_selected {
   @extend .cont;
+
   background: var(--blue);
   color: white;
 

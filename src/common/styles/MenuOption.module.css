@@ -1,0 +1,59 @@
+.cont, .container_notselected, .container_selected {
+  width: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: none;
+}
+
+.div, .container_notselected div, .container_selected div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.span, .container_notselected div span, .container_selected div span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.p, .container_notselected div p, .container_selected div p {
+  font-size: 0.75rem;
+}
+
+.container_notselected {
+  background: transparent;
+  color: var(--dark3);
+}
+
+.container_selected {
+  background: var(--blue);
+  color: white;
+}
+/*# sourceMappingURL=MenuOption.module.css.map */

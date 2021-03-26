@@ -10,6 +10,7 @@ exports[`more component renders correctly 1`] = `
     <button
       className="button"
       onClick={[Function]}
+      type="button"
     >
       Logout
     </button>

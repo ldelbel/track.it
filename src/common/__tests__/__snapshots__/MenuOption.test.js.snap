@@ -3,6 +3,7 @@
 exports[`menuOption component renders correctly 1`] = `
 <button
   onClick={[Function]}
+  type="button"
 >
   <div>
     <span>

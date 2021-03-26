@@ -18,7 +18,7 @@
   &__title {
     color: white;
     font-size: 5rem;
-    text-shadow: 4px 4px 0 var(--darkest)
+    text-shadow: 4px 4px 0 var(--darkest);
   }
 
   &__input {
@@ -33,7 +33,7 @@
       font-weight: 500;
     }
 
-    input[type=text]{
+    input[type=text] {
       height: 4rem;
       border: none;
       padding: 5%;
@@ -42,7 +42,7 @@
       border-radius: 5px;
     }
 
-    input[type=submit]{
+    input[type=submit] {
       height: 3rem;
       border: none;
       margin-top: 2rem;
