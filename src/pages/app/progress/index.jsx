@@ -43,7 +43,7 @@ const Progress = ({ runningSessions }) => {
                 <span>Avg Speed</span>
                 <div className={styles.section__info__item__div}>
                   <div>
-                    <span>{speedOverallAvg}</span>
+                    <span>{speedOverallAvg.toFixed(2)}</span>
                     <p>km/h</p>
                   </div>
                 </div>
@@ -52,7 +52,7 @@ const Progress = ({ runningSessions }) => {
                 <span>Avg Pace</span>
                 <div className={styles.section__info__item__div}>
                   <div>
-                    <span>{paceOverallAvg}</span>
+                    <span>{paceOverallAvg.toFixed(2)}</span>
                     <p>h/km</p>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ const Progress = ({ runningSessions }) => {
                 <span>Speed</span>
                 <div className={styles.section__info__item__div}>
                   <div>
-                    <span>{speedMaxValue}</span>
+                    <span>{speedMaxValue.toFixed(2)}</span>
                     <p>km/h</p>
                   </div>
                 </div>
@@ -77,7 +77,7 @@ const Progress = ({ runningSessions }) => {
                 <span>Pace</span>
                 <div className={styles.section__info__item__div}>
                   <div>
-                    <span>{paceMaxValue}</span>
+                    <span>{paceMaxValue.toFixed(2)}</span>
                     <p>h/km</p>
                   </div>
                 </div>

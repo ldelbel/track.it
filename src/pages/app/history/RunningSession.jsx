@@ -32,7 +32,7 @@ const RunningSession = ({ session }) => {
         <div className={styles.container__leftdiv__info}>
           <span>{date.toDateString()}</span>
           <p>
-            {percentage}
+            {percentage.toFixed(2)}
             % of the goal
           </p>
         </div>
