@@ -26,9 +26,10 @@ describe('app', () => {
     });
 
     it('can navigate between pages inside /app', () => {
+      cy.get('svg').should('be.visible');
       cy.findByText('New Running Session').should('be.visible');
       cy.visit('/app/history');
-      cy.findByText('No entries yet').should('be.visible');
+      cy.findByText('Fri Mar 26 2021').should('be.visible');
       cy.visit('/app/progress');
       cy.findAllByText('Your Progress').should('be.visible');
       cy.visit('/app/more');
@@ -36,6 +37,7 @@ describe('app', () => {
     });
 
     it('can logout', () => {
+      cy.get('svg').should('be.visible');
       cy.findByText('New Running Session').should('be.visible');
       cy.visit('/app/more');
       cy.findAllByText('Logout').click();
