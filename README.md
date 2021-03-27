@@ -47,7 +47,7 @@
 
 ## Project Briefing <a name = "brief"></a>
 
-**--This is the front-end of a full stack project, to check the Rails API backend, check [here]()**
+**--This is the front-end of a full stack project, to see the Rails API backend, check [here]()**
 
 This project is the Final Capstone Project required for completing the Microverse Technical Curriculum [Microverse](https://www.microverse.org/).
 
