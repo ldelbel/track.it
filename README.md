@@ -22,9 +22,8 @@
     -
   </p>
 </p>
-  
-  
- <p align="center">
+
+<p align="center">
   <img src="/screenshot1.jpeg" width="150" />
   <img src="/screenshot2.jpeg" width="150" /> 
   <img src="/screenshot3.jpeg" width="150" />
