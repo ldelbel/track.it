@@ -46,7 +46,7 @@
 
 ## Project Briefing <a name = "brief"></a>
 
-**--This is the front-end of a full stack project, to see the Rails API backend, check [here]()**
+**--This is the front-end of a full stack project, to see the Rails API backend, check [here](https://github.com/ldelbel/track.it-api)**
 
 This project is the Final Capstone Project required for completing the Microverse Technical Curriculum [Microverse](https://www.microverse.org/).
 
@@ -64,7 +64,7 @@ The provided requirements stated that we must build the app following these guid
 - With routes for each of the screens, so the user can easily go back and forward
 - Using redux to store info used across the app, like the username
 
-This project is a **Full Stack Project**, built in two parts. This repository contains the front-end, and this [link]() will lead you to the repository where the backend (a Rails API) is.
+This project is a **Full Stack Project**, built in two parts. This repository contains the front-end, and this [link](https://github.com/ldelbel/track.it-api) will lead you to the repository where the backend (a Rails API) is.
 
 ## File Structure, Data Management and Quality Control <a name = "arch"></a>
 
@@ -78,7 +78,7 @@ The state of the entire app was managed using Redux Store.
 
 ### External Requests and API
 
-The data is hadled by the Rails API built exclusively for this project, and hosted on Heroku. Check it [here](). 
+The data is hadled by the Rails API built exclusively for this project, and hosted on Heroku. Check it [here](https://github.com/ldelbel/track.it-api). 
 
 ### Quality Control
 
@@ -87,7 +87,7 @@ This project was built following the rules of [ESLint](https://eslint.org/) and 
 
 ## Live Demo Link <a name = "ldl"></a>
 
-[Live Demo]()
+[Live Demo](https://trackitmobile.netlify.app/)
 
 If you want to check how the pages look already filled with data, login using the name "example".
 
