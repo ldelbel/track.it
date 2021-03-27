@@ -1,3 +1,5 @@
+/* globals cy */
+
 describe('app', () => {
   describe('When user is not logged in', () => {
     it('can\'t login into the app without a name', () => {
