@@ -3,6 +3,8 @@
 [![View Code](https://img.shields.io/badge/View%20-Code-green)]()
 [![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)]()
 [![GitHub Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)]()
+[![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4bd1a395-a408-4614-b183-56e818daf0e5/deploy-status)](https://app.netlify.com/sites/trackitmobile/deploys)
 
 <br />
 <p align="center">
