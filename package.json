@@ -74,13 +74,14 @@
     "extends": "react-app"
   },
   "jest": {
-  "collectCoverageFrom": [
-    "**/*.{js,jsx}",
-    "!**/node_modules/**",
-    "!**/vendor/**",
-    "!**/src/index.js",
-    "!**/src/Routes.js"
-  ]},
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/src/index.js",
+      "!**/src/Routes.js"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
