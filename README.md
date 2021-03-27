@@ -64,7 +64,7 @@ The provided requirements stated that we must build the app following these guid
 - With routes for each of the screens, so the user can easily go back and forward
 - Using redux to store info used across the app, like the username
 
-This project is a **Full Stack Project**, built in two parts. This repository contains the front-end, and this [link]() will lead you to the repository where the backend (a Rails API) is.
+This project is a **Full Stack Project**, built in two parts. This repository contains the front-end, and this [link](https://github.com/ldelbel/track.it-api) will lead you to the repository where the backend (a Rails API) is.
 
 ## File Structure, Data Management and Quality Control <a name = "arch"></a>
 
