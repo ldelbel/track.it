@@ -1,0 +1,55 @@
+.container {
+  background: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+
+  &__leftdiv {
+    display: flex;
+
+    &__progressbar {
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--blue);
+      margin-right: 0.7rem;
+    }
+
+    &__info {
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--darker);
+      }
+
+      p {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: var(--dark3);
+        margin-top: 0.3rem;
+      }
+    }
+  }
+
+  &__rightdiv {
+    display: flex;
+    align-items: center;
+
+    &__info {
+      display: flex;
+      margin-right: 0.5rem;
+
+      span {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-right: 0.3rem;
+        color: var(--darker);
+      }
+
+      p {
+        line-height: 1.6rem;
+      }
+    }
+  }
+}
