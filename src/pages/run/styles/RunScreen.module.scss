@@ -1,0 +1,67 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 3%;
+}
+
+.clock {
+  position: absolute;
+  top: 3%;
+  left: 5%;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+
+  p {
+    margin-left: 0.5rem;
+  }
+}
+
+.goal {
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  color: var(--darker);
+  background: white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+
+  span {
+    padding: 3px;
+    background: var(--darker);
+    color: white;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  p {
+    padding: 3px;
+    margin-left: 0.5rem;
+  }
+}
+
+.content {
+  width: 100%;
+}
+
+.stopbtn {
+  width: 80%;
+  padding: 0.5rem 0;
+  background: var(--darker);
+  border: none;
+  border-radius: 3px;
+  color: var(--blue3);
+  font-size: 2rem;
+  margin-top: 3rem;
+  position: absolute;
+  bottom: 11%;
+  left: 10%;
+}

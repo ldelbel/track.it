@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`more component renders correctly 1`] = `
+<main
+  className="bg"
+>
+  <div
+    className="container"
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+      type="button"
+    >
+      Logout
+    </button>
+  </div>
+</main>
+`;
