@@ -76,7 +76,7 @@ const Run = ({ addRunningSession, id }) => {
 
   useEffect(() => {
     if (goal !== 0) {
-      setPercentage((parseFloat(distance.toFixed(2)) / goal) * 100);
+      setPercentage((parseFloat(distance.toFixed(2)) / goal ));
     }
   }, [distance, goal]);
 
@@ -116,14 +116,14 @@ const Run = ({ addRunningSession, id }) => {
     history.push('/app/history');
   };
 
-  const stopRunningSession = async () => {
+  const stopRunningSession = () => {
     clearInterval(running);
     setIsRunning(false);
     pause();
     const duration = hours + minutes / 60 + seconds / 3600;
     const session = createSessionObject(distance, duration, timestamp, goal);
     addRunningSession(session);
-    await postRunningSession(id, session);
+    postRunningSession(id, session);
     finishSession();
   };
 

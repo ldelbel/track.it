@@ -4,14 +4,7 @@ import RunningSession from './RunningSession';
 import styles from './styles/History.module.scss';
 
 const History = ({ runningSessions }) => {
-  const sorted = runningSessions.sort((a, b) => {
-    if (a.start_time < b.start_time) {
-      return 1;
-    }
-    return b.start_time < a.start_time ? -1 : 0;
-  });
-
-  console.log(sorted);
+  const anything = ''
 
   return (
     <main className={styles.bg}>
@@ -41,7 +34,7 @@ History.propTypes = {
       avg_speed: PropTypes.number,
       avg_pace: PropTypes.number,
       goal: PropTypes.number,
-      start_time: PropTypes.number,
+      start_time: PropTypes
     }),
   ).isRequired,
 };

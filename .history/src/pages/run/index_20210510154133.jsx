@@ -123,7 +123,7 @@ const Run = ({ addRunningSession, id }) => {
     const duration = hours + minutes / 60 + seconds / 3600;
     const session = createSessionObject(distance, duration, timestamp, goal);
     addRunningSession(session);
-    await postRunningSession(id, session);
+    postRunningSession(id, session);
     finishSession();
   };
 

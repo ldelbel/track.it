@@ -5,10 +5,10 @@ import styles from './styles/History.module.scss';
 
 const History = ({ runningSessions }) => {
   const sorted = runningSessions.sort((a, b) => {
-    if (a.start_time < b.start_time) {
+    if (a.start_time > b.start_time) {
       return 1;
     }
-    return b.start_time < a.start_time ? -1 : 0;
+    return b.start_time > a.start_time ? -1 : 0
   });
 
   console.log(sorted);

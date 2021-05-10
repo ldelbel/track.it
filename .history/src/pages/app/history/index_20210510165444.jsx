@@ -8,7 +8,7 @@ const History = ({ runningSessions }) => {
     if (a.start_time < b.start_time) {
       return 1;
     }
-    return b.start_time < a.start_time ? -1 : 0;
+    return b.start_time > a.start_time ? -1 : 0;
   });
 
   console.log(sorted);

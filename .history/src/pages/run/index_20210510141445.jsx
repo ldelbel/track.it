@@ -72,6 +72,8 @@ const Run = ({ addRunningSession, id }) => {
 
   useEffect(() => {
     savedBreadCrumbs.current = addBreadcrumb;
+
+    
   }, [breadcrumbs]);
 
   useEffect(() => {
@@ -116,14 +118,14 @@ const Run = ({ addRunningSession, id }) => {
     history.push('/app/history');
   };
 
-  const stopRunningSession = async () => {
+  const stopRunningSession = () => {
     clearInterval(running);
     setIsRunning(false);
     pause();
     const duration = hours + minutes / 60 + seconds / 3600;
     const session = createSessionObject(distance, duration, timestamp, goal);
     addRunningSession(session);
-    await postRunningSession(id, session);
+    postRunningSession(id, session);
     finishSession();
   };
 

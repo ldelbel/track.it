@@ -14,7 +14,7 @@ const RunningSession = ({ session }) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} >
       <div className={styles.container__leftdiv}>
         <div className={styles.container__leftdiv__progressbar}>
           <CircularProgressbar
@@ -39,7 +39,7 @@ const RunningSession = ({ session }) => {
       </div>
       <div className={styles.container__rightdiv}>
         <div className={styles.container__rightdiv__info}>
-          <span>{session.distance.toFixed(2)}</span>
+          <span>{session.distance}</span>
           <p>km</p>
         </div>
       </div>
@@ -58,6 +58,7 @@ RunningSession.propTypes = {
     avg_pace: PropTypes.number,
     goal: PropTypes.number,
   }).isRequired,
+  key: PropTypes.string.isRequired,
 };
 
 export default RunningSession;

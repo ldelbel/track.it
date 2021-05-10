@@ -4,7 +4,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import styles from './styles/RunningSession.module.scss';
 import 'react-circular-progressbar/dist/styles.css';
 
-const RunningSession = ({ session }) => {
+const RunningSession = ({ session, key }) => {
   const date = new Date(session.start_time);
   let percentage = 0.0;
   if (session.goal) {
@@ -39,7 +39,7 @@ const RunningSession = ({ session }) => {
       </div>
       <div className={styles.container__rightdiv}>
         <div className={styles.container__rightdiv__info}>
-          <span>{session.distance.toFixed(2)}</span>
+          <span>{session.distance}</span>
           <p>km</p>
         </div>
       </div>

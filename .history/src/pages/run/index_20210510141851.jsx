@@ -10,7 +10,7 @@ import { addRunningSession } from '../../actions';
 import { postRunningSession } from '../../api';
 
 const Run = ({ addRunningSession, id }) => {
-  const location = useGeolocation();
+  let location = () => {};
   const [distance, setDistance] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [breadcrumbs, setBreadcrumbs] = useState({ list: [] });
@@ -28,6 +28,10 @@ const Run = ({ addRunningSession, id }) => {
     if (!localStorage.user) {
       history.push('/');
     }
+
+    location = useGeoLocation();
+
+    return () => location.clearW
   }, []);
 
   const haversineDistance = (mk1, mk2) => {
@@ -116,14 +120,14 @@ const Run = ({ addRunningSession, id }) => {
     history.push('/app/history');
   };
 
-  const stopRunningSession = async () => {
+  const stopRunningSession = () => {
     clearInterval(running);
     setIsRunning(false);
     pause();
     const duration = hours + minutes / 60 + seconds / 3600;
     const session = createSessionObject(distance, duration, timestamp, goal);
     addRunningSession(session);
-    await postRunningSession(id, session);
+    postRunningSession(id, session);
     finishSession();
   };
 

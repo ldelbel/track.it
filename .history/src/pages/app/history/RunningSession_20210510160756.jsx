@@ -39,7 +39,7 @@ const RunningSession = ({ session }) => {
       </div>
       <div className={styles.container__rightdiv}>
         <div className={styles.container__rightdiv__info}>
-          <span>{session.distance.toFixed(2)}</span>
+          <span>{session.distance}</span>
           <p>km</p>
         </div>
       </div>
