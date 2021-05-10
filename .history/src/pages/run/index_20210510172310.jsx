@@ -44,6 +44,7 @@ const Run = ({ addRunningSession, id }) => {
 
   const updateDistance = () => {
     if (breadcrumbs.list.length >= 2) {
+      console.log(percentage);
       const displacement = haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
         breadcrumbs.list[breadcrumbs.list.length - 2]);
       setDistance((oldState) => oldState + displacement);

@@ -15,7 +15,7 @@ const History = ({ runningSessions }) => {
     <main className={styles.bg}>
       <div className={styles.container}>
         {runningSessions.length ? (
-          sorted.map((session) => (
+          runningSessions.map((session) => (
             <RunningSession session={session} key={session.id} />
           ))
         ) : (

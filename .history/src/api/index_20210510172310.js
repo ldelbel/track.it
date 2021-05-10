@@ -55,6 +55,7 @@ const postRunningSession = async (userID, session) => {
       },
       body: JSON.stringify(session),
     });
+    console.log('posting working');
     const oldLocalData = JSON.parse(localStorage.getItem('runningSessions'));
     const newLocalData = oldLocalData.concat(session);
     localStorage.setItem('runningSessions', JSON.stringify(newLocalData));

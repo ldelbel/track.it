@@ -11,11 +11,13 @@ const History = ({ runningSessions }) => {
     return b.start_time < a.start_time ? -1 : 0;
   });
 
+  console.log(sorted);
+
   return (
     <main className={styles.bg}>
       <div className={styles.container}>
         {runningSessions.length ? (
-          sorted.map((session) => (
+          runningSessions.map((session) => (
             <RunningSession session={session} key={session.id} />
           ))
         ) : (
