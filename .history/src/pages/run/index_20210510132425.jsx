@@ -44,14 +44,12 @@ const Run = ({ addRunningSession, id }) => {
 
   const updateDistance = () => {
     if (breadcrumbs.list.length >= 2) {
-      console.log(distance);
-      const displacement = haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
-        breadcrumbs.list[breadcrumbs.list.length - 2]);
-      // const newDist = distance
-      //  + haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
-      //    breadcrumbs.list[breadcrumbs.list.length - 2]);
-      // console.log(newDist);
-      setDistance((oldState) => oldState + displacement);
+      console.log(distance)
+      const newDist = distance
+       + haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
+         breadcrumbs.list[breadcrumbs.list.length - 2]);
+      console.log(newDist);
+      setDistance(newDist);
     }
   };
 

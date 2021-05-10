@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { useGeolocation } from 'react-use';
-import { useStopwatch } from 'react-timer-hook';
-import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
-import RunScreen from './RunScreen';
-import Input from './Input';
-import { addRunningSession } from '../../actions';
-import { postRunningSession } from '../../api';
+import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import { useGeolocation } from "react-use";
+import { useStopwatch } from "react-timer-hook";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import RunScreen from "./RunScreen";
+import Input from "./Input";
+import { addRunningSession } from "../../actions";
+import { postRunningSession } from "../../api";
 
 const Run = ({ addRunningSession, id }) => {
   const location = useGeolocation();
@@ -18,35 +18,47 @@ const Run = ({ addRunningSession, id }) => {
   const [percentage, setPercentage] = useState(0);
   const [timestamp, setTimestamp] = useState(null);
   const savedBreadCrumbs = useRef();
-  const {
-    start, pause, reset, seconds, minutes, hours,
-  } = useStopwatch({ autoStart: false });
+  const { start, pause, reset, seconds, minutes, hours } = useStopwatch({
+    autoStart: false,
+  });
   const history = useHistory();
-  let running = '';
+  let running = "";
 
   useEffect(() => {
     if (!localStorage.user) {
-      history.push('/');
+      history.push("/");
     }
   }, []);
 
   const haversineDistance = (mk1, mk2) => {
-    const R = 6371.0710;
+    const R = 6371.071;
     const rlat1 = mk1.position.lat * (Math.PI / 180);
     const rlat2 = mk2.position.lat * (Math.PI / 180);
     const difflat = rlat2 - rlat1;
     const difflon = (mk2.position.lng - mk1.position.lng) * (Math.PI / 180);
-    const d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat / 2)
-     * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2)
-     * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
+    const d =
+      2 *
+      R *
+      Math.asin(
+        Math.sqrt(
+          Math.sin(difflat / 2) * Math.sin(difflat / 2) +
+            Math.cos(rlat1) *
+              Math.cos(rlat2) *
+              Math.sin(difflon / 2) *
+              Math.sin(difflon / 2)
+        )
+      );
     return d;
   };
 
   const updateDistance = () => {
     if (breadcrumbs.list.length >= 2) {
       console.log(distance);
-      const displacement = haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
-        breadcrumbs.list[breadcrumbs.list.length - 2]);
+      displacement = haversineDistance(
+        breadcrumbs.list[breadcrumbs.list.length - 1],
+        breadcrumbs.list[breadcrumbs.list.length - 2]
+      );
+
       // const newDist = distance
       //  + haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
       //    breadcrumbs.list[breadcrumbs.list.length - 2]);
@@ -117,7 +129,7 @@ const Run = ({ addRunningSession, id }) => {
     setTimestamp(null);
     setDistance(0);
     reset();
-    history.push('/app/history');
+    history.push("/app/history");
   };
 
   const stopRunningSession = () => {
@@ -133,21 +145,17 @@ const Run = ({ addRunningSession, id }) => {
 
   return (
     <>
-      {isRunning
-        ? (
-          <RunScreen
-            percentage={percentage}
-            distance={distance}
-            stopRunningSession={stopRunningSession}
-            goal={goal}
-            clock={{ sec: seconds, min: minutes, hrs: hours }}
-          />
-        ) : (
-          <Input
-            setGoal={setGoal}
-            startRunningSession={startRunningSession}
-          />
-        )}
+      {isRunning ? (
+        <RunScreen
+          percentage={percentage}
+          distance={distance}
+          stopRunningSession={stopRunningSession}
+          goal={goal}
+          clock={{ sec: seconds, min: minutes, hrs: hours }}
+        />
+      ) : (
+        <Input setGoal={setGoal} startRunningSession={startRunningSession} />
+      )}
     </>
   );
 };

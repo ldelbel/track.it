@@ -51,7 +51,7 @@ const Run = ({ addRunningSession, id }) => {
       //  + haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
       //    breadcrumbs.list[breadcrumbs.list.length - 2]);
       // console.log(newDist);
-      setDistance((oldState) => oldState + displacement);
+      setDistance(oldState => oldState + displacement);
     }
   };
 

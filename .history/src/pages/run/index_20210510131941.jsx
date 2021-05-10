@@ -44,14 +44,11 @@ const Run = ({ addRunningSession, id }) => {
 
   const updateDistance = () => {
     if (breadcrumbs.list.length >= 2) {
-      console.log(distance);
-      const displacement = haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
-        breadcrumbs.list[breadcrumbs.list.length - 2]);
-      // const newDist = distance
-      //  + haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
-      //    breadcrumbs.list[breadcrumbs.list.length - 2]);
-      // console.log(newDist);
-      setDistance((oldState) => oldState + displacement);
+      const newDist = distance
+       + haversineDistance(breadcrumbs.list[breadcrumbs.list.length - 1],
+         breadcrumbs.list[breadcrumbs.list.length - 2]);
+         console.log(newDist);
+      setDistance(newDist);
     }
   };
 
@@ -75,6 +72,7 @@ const Run = ({ addRunningSession, id }) => {
   }, [location.loading]);
 
   useEffect(() => {
+    console.log(distance);
     savedBreadCrumbs.current = addBreadcrumb;
   }, [breadcrumbs]);
 
