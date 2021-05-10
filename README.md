@@ -9,7 +9,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ldelbel/track.it">
-    <img src="run.png" alt="Logo" width="200">
+    <img src="images/run.png" alt="Logo" width="200">
   </a>
 
   <h3 align="center">Functional Running App for Mobile Devices<h3>
@@ -26,12 +26,12 @@
 </p>
 
 <p align="center">
-  <img src="/screenshot1.jpeg" width="150" />
-  <img src="/screenshot2.jpeg" width="150" /> 
-  <img src="/screenshot3.jpeg" width="150" />
-  <img src="/screenshot4.jpeg" width="150" />
-  <img src="/screenshot5.jpeg" width="150" />
-  <img src="/screenshot6.jpeg" width="150" />
+  <img src="/images/screenshot1.jpeg" width="150" />
+  <img src="/images/screenshot2.jpeg" width="150" /> 
+  <img src="/images/screenshot3.jpeg" width="150" />
+  <img src="/images/screenshot4.jpeg" width="150" />
+  <img src="/images/screenshot5.jpeg" width="150" />
+  <img src="/images/screenshot6.jpeg" width="150" />
 </p>
     
 ## Table of Contents
@@ -153,7 +153,7 @@ $ yarn test
 
   This is a project with the goal of learning and presenting the skills acquired along the React&Redux section of Microverse Curriculum. Because of that, the coverage goals were not very high. It was decided that for this purpose maintaining overall coverage around 50% is acceptable.
   
-![coverage](coverage.png)
+![coverage](images/coverage.png)
 
 ### Integration Tests (E2E)
 
@@ -171,7 +171,7 @@ To watch the procedures of the test suites in Cypress interface, run the followi
 $ yarn test:e2e:dev
 
 ```
-![cypress](cypress.png)
+![cypress](images/cypress.png)
 
 
 ## ✒️ Author <a name = "author"></a>

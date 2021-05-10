@@ -34,9 +34,9 @@ const App = (props) => {
     setIsLoading(false);
   };
 
-  const loadFromLocalStorage = () => {
-    const id = JSON.parse(localStorage.getItem('id'));
-    const data = JSON.parse(localStorage.getItem('runningSessions'));
+  const loadFromLocalStorage = async () => {
+    const id = await JSON.parse(localStorage.getItem('id'));
+    const data = await JSON.parse(localStorage.getItem('runningSessions'));
     fillList(id, data);
     setIsLoading(false);
   };
